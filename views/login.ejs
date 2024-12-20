@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login2.css">
+    <link rel="icon" type="image/png" href="../uploads/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+<div class="body">
+  <div class="main-body">
+    <div class="otp-form-container otp-active">
+        <div class="otp-heading">
+            <h3 class="otp-write">Please Enter Your Email to get verification link</h3>
+        </div>
+        <form action="/forgetpassword" method="post" id="forget-password" class="otp-form">
+            <div class="input-field">
+                <input type="email" name="email" id="otp-email" placeholder="Email Address" required>
+            </div>
+            <div class="btn-container">
+                <div class="btn-layer"></div>
+                <input type="submit" class="submit-btn" id="otp-btn">
+            </div>
+        </form>
+       
+    </div>
+  </div>
+  <%- include('partials/footer') %>   
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script>
+
+const showmenu=(toggleId, navId) =>{
+const toggle = document.getElementById(toggleId),
+      nav=document.getElementById(navId);
+
+      toggle.addEventListener('click',()=>{
+           nav.classList.toggle('show-menu');
+           toggle.classList.toggle('show-icon');
+
+      })
+
+}
+showmenu('nav-toggle','nav-menu');
+
+const dropdownItems = document.querySelectorAll('.dropdown-item')
+
+dropdownItems.forEach((item)=>{
+const dropdownButton= item.querySelector('.dropdown-button');
+
+dropdownButton.addEventListener('click',()=>{
+     const showDropdown= document.querySelector('.show-dropdown')
+
+     toggleItem(item);
+
+     if(showDropdown && showDropdown!==item){
+       toggleItem(showDropdown)
+     }
+})
+})
+
+const toggleItem = (item) =>{
+ const dropdownContainer = item.querySelector('.dropdown-container');
+ 
+ if(item.classList.contains('show-dropdown')){
+      dropdownContainer.removeAttribute('style');
+      item.classList.remove('show-dropdown');
+ }
+ else{
+     
+ dropdownContainer.style.height=dropdownContainer.scrollHeight +'px';
+ item.classList.add('show-dropdown'); 
+ }
+
+
+
+}
+const mediaQuery=matchMedia('(min-width:1118px)'),
+dropdownContainer=document.querySelectorAll('.dropdown-container')
+
+const removeStyle=()=>{
+ if(mediaQuery.matches){
+      dropdownContainer.forEach((e)=>{
+         e.removeAttribute('style');
+      })
+
+      dropdownContainer.forEach((e)=>{
+           e.classList.remove('show-dropdown');
+        })
+      
+ }
+}
+addEventListener('resize',removeStyle);
+
+
+    document.addEventListener('DOMContentLoaded',()=>{
+    const form = document.getElementById('forget-password');
+    form.addEventListener('submit',async(event)=>{
+        event.preventDefault();
+        const formData = new FormData(form);
+        const json = Object.fromEntries(formData.entries());      
+        try{
+            const response = await fetch(`/forgetpassword`,{
+                method: 'POST',
+                headers: {
+                  'Content-Type':'application/json'
+                },
+                body: JSON.stringify(json)
+            });
+        const data = await response.json();
+        Toastify({
+            text: data.message,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            backgroundColor: data.success? "#4CAF50":"#FF0000",
+        }).showToast();
+
+        } catch(error){
+            console.error('Error:', error);
+            Toastify({
+            text: "An error occurred. Please try again.",
+            duration: 3000, 
+            close: true, 
+            gravity: "top", 
+            position: "center",
+            backgroundColor: "#FF0000", 
+          }).showToast();
+        } 
+    })
+})
+  </script>
+</body>
+</html>
+
+
+
+ 
+

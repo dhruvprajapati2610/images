@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyers-Legal Reach</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../uploads/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">   
+    <link rel="stylesheet" href="fullarticle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Slab&display=swap" rel="stylesheet">
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=66793db46b65c10019188ef5&product=inline-share-buttons&source=platform" async="async"></script>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <%- include('partials/header') %>
+    <div class="body"> 
+        <div class="main-body">
+             <div class="article-container-0">
+                <div class="article-container">
+                        <div class="article-section">
+                        <div class="article-heading">
+                            <% articles.forEach(article=>{ %>
+
+                          
+                            <h1><%= article.title %></h1>
+                            <span><%=new Date(article.created_at).toDateString()%></span>
+                        </div>
+                        <div class="article-content">
+                           <%-article.content%>
+                           
+                        </div>
+                        <hr>
+                        </div>
+                        <div class="like">
+                           <div class="like-container"> 
+                            <div class="like-heading"><span>
+                                Drop a like if you liked the article...
+                            </span></div>
+                            <div class="like-display">
+                                
+                                    <button data-user-liked="<%=userLiked%>" value="" id="like-button">
+                                        <i class="fa-solid fa-thumbs-up"></i>
+                                    </button>
+                                    <input type="hidden" id="articleId"  name="articleId" value="<%= articleId %>">
+                                    <input type="hidden" id="userId" name="currentUserId" value="<%=currentUserId%>">
+                                    
+                              
+                               
+                                <span><p id="like-count"><%=likeCount%> likes</p> </span>
+                        
+                            </div>
+                           </div>
+                           <hr>
+                        </div>
+                        <div class="sharethis-inline-share-buttons"></div>
+                        <br>
+                        <div class="written-by">
+                           <div class="wb-container">
+                            <span class="wb-span"> Written By - </span>
+                        
+                            <div class="lawyer-profile">
+                                   <div class="lawyer-image">
+                                       <div class="img-box">
+                                           <img src="<%= lawyer.image %>" alt="">
+                                          </div>
+                                   </div>
+                                   <div class="lawyer-name-rating">
+                                       <div class="name">
+                                           <h4><a href=""><%=lawyer.name%></a></h4>
+                                       </div>
+                                       <div class="rating">
+                                             <div class="rating-star">
+                                                <% for (let i=1; i<=5; i++) { %>
+                                                    <% if(i<= Math.floor(lawyer.average_rating)) { %>
+                                                     <span class="fa fa-star rating-checked-reveiew"></span>
+                                                    <% } else if(i===Math.ceil(lawyer.average_rating) && !Number.isInteger(lawyer.average_rating)) { %>
+                                                     <span class="fa fa-star-half-alt rating-checked"></span>
+                                                   <% } else {  %>
+                                                     <span class="fa fa-star"></span>
+                                                   <% } %>
+                                                  <% } %>
+                                             </div>
+                                             <div class="rating-info">
+                                             <%=roundToOneDecimalPlace(lawyer.average_rating)%>|<%= lawyer.client_count %>+ user<%=lawyer.client_count > 1?'s':''%> rating
+                                             </div>
+                                       </div>
+                                       <div class="loc-exp">
+                                           <div class="lawyer-loc">
+                                               <i class="fa-solid fa-location-dot fa-solid-logo"></i>&nbsp;&nbsp;<%=lawyer.city%>,&nbsp;<%=lawyer.states%>
+                                             </div>
+                                             <div class="lawyer-exp">
+                                               <i class="fa-solid fa-suitcase fa-solid-logo"></i>&nbsp;&nbsp;<%=lawyer.yrs_exp%> years experience
+                                             </div>
+                                       </div>
+                                   </div>
+                            </div>
+                            </div>
+                            <hr>                                
+                         </div>
+                      <div class="lawyer-reveiews">
+                        <div class="reveiew-title">
+                             Comments
+                           
+                        </div>
+                        <div class="add-reveiew">
+                            <div class="add-reveiew-container">
+                                <form id="add-review" action="/fullarticle/review" method="post">
+                                <!-- <div class="reveiew-rating">
+                                    <input type="number" name="rating" hidden>
+                                    <span class="fa fa-star star" style="--i:0;"></span>
+                                    <span class="fa fa-star star" style="--i:1;"></span>
+                                    <span class="fa fa-star star" style="--i:2;"></span>
+                                    <span class="fa fa-star star" style="--i:3;"></span>
+                                    <span class="fa fa-star star" style="--i:4;"></span>
+                                </div> -->
+                                <input type="hidden" name="articleId" value="<%= articleId %>">
+                                <div class="text-box">
+                                        <textarea name="comment" id="new-reveiew" cols="40" rows="5" placeholder="add a comment"></textarea>
+                                        <div class="new-ok-cnc-btn">
+                                            <button type="submit" class="new-ok-btn">Submit</button>
+                                            
+                                        </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reveiew-section">
+                            <% comments.forEach(comment=>{ %>
+
+                           
+                            <div class="reveiew-container">
+                                <div class="reveiew-name-rating">
+                                    <div class="reveiew-name">
+                                     <%= comment.username %>
+                                     
+                                    </div>
+                                    <div class="review-date-delete">
+                                      <div class="review-date">
+                                    <%= formatDate(comment.created_at)%>
+                                    </div>
+                                    <% if(currentUser!== null && currentUser.name===comment.username) { %>
+                                      <% if(comment.user_id===currentUser.id) { %>
+                                    <form id="commentDel" action="/fullarticle/comment/<%=comment.id%>?_method=DELETE" method="post">
+                                      <input type="hidden" id="commentId" value="<%=comment.id%>">
+                                    <div class="review-delete">
+                                     <button class="delbtn" type="submit"><i class="fa-solid fa-trash-can"></i></button> 
+                                   </div>
+                                  </form>
+                                    <% } %>
+                                    <% } %>
+                                    </div>
+                                  
+                                </div>
+                           
+                            
+                                <div class="reveiew-para">
+                                 <p><%=comment.content%></p>
+                                </div>
+                                <div class="lawyer-reply">
+                                 <div class="reply-btn">
+                                 <div class="reply-btn-1">
+                                     <i class="fa-solid fa-reply "></i>
+                                     <span class="reply-btn-span" data-comment-id="<%=comment.id%>">Reply</span>
+                                 </div>
+                                 <div class="reply-btn-2">
+                                     <span class="show-reply-btn" data-comment-id="<%=comment.id%>">Show replies</span>
+                                     <span class="hide-reply-btn" data-comment-id="<%=comment.id%>">Hide replies</span>
+                                 </div>
+                                 </div>
+                                 <div class="lawyer-reply-para" data-comment-id="<%=comment.id%>" >
+                                     <form id="add-reply" method="post" action="/add-reply">
+                                         <input type="hidden" name="commentId" value="<%=comment.id%>">
+                                         <textarea class="boxcolor" name="content" id="reply-para" cols="40" rows="5"></textarea>
+                                         <div class="btn-ok-cnc">
+                                             <button type="submit" class="ok-btn">Submit</button>
+                                             <div class="cnc-btn" data-comment-id="<%=comment.id%>">Cancel</div>
+                                         </div>
+                                     </form>
+                                 </div>
+                                 <% replies.filter(reply=> reply.comment_id=== comment.id).forEach(reply=>{ %>
+                                 <div class="lawyer-previous-reply" data-comment-id="<%=comment.id%>">
+                                    <div class="reply"></div>
+                                     <div class="p-reply" id="p-reply-1">
+                                      <div class="p-reply-name-date">
+                                        <div class="p-reply-name">
+                                         <span class="<%= reply.user_id===article.author_id ? 'highlight-author-reply': ''%>"><%=reply.username%>
+                                        <span class="author-label"><%=reply.user_id===article.author_id?'(Author)':''%></span></span>
+                                        </div>
+                                        <div class="p-reply-date-delete">
+                                          <div class="p-reply-date">
+                                            <span> <%=formatDate(reply.created_at)%></span>     
+                                          </div>
+                                          <% if(currentUser!== null && currentUser.name===reply.username) { %>
+                                            <% if(reply.user_id===currentUser.id) { %>
+                                          <form action="/fullarticle/del-reply/<%=reply.id%>?_method=DELETE" id="replyDel" method="post">
+                                            <input type="hidden" id="replyId" value="<%=reply.id%>">
+                                          <div class="p-reply-delete">
+                                           <button class="delbtn" type="submit"><i class="fa-solid fa-trash-can"></i></button> 
+                                          </div>
+
+                                        </form>
+                                        <% } %>
+                                        <% } %>
+                                        </div>
+                                       </div> 
+                                         <p><%=reply.content%></p>
+                                     </div>
+                                 </div>
+                                 <%})%>
+                             </div>
+                            </div>
+                          
+                            <% }) %>
+                            <%  }) %>  
+                            
+                              
+                      
+                            
+                        </div>
+                </div>
+             </div>
+         </div>
+         <%- include('partials/footer') %>    
+        </div>
+      
+      
+
+
+<script>
+    
+
+    const showmenu=(toggleId, navId) =>{
+    const toggle = document.getElementById(toggleId),
+          nav=document.getElementById(navId);
+
+          toggle.addEventListener('click',()=>{
+               nav.classList.toggle('show-menu');
+               toggle.classList.toggle('show-icon');
+
+          })
+
+}
+showmenu('nav-toggle','nav-menu');
+
+const dropdownItems = document.querySelectorAll('.dropdown-item')
+
+dropdownItems.forEach((item)=>{
+    const dropdownButton= item.querySelector('.dropdown-button');
+    
+    dropdownButton.addEventListener('click',()=>{
+         const showDropdown= document.querySelector('.show-dropdown')
+
+         toggleItem(item);
+
+         if(showDropdown && showDropdown!==item){
+           toggleItem(showDropdown)
+         }
+    })
+})
+
+const toggleItem = (item) =>{
+     const dropdownContainer = item.querySelector('.dropdown-container');
+     
+     if(item.classList.contains('show-dropdown')){
+          dropdownContainer.removeAttribute('style');
+          item.classList.remove('show-dropdown');
+     }
+     else{
+         
+     dropdownContainer.style.height=dropdownContainer.scrollHeight +'px';
+     item.classList.add('show-dropdown'); 
+     }
+
+
+    
+}
+const mediaQuery=matchMedia('(min-width:1118px)'),
+ dropdownContainer=document.querySelectorAll('.dropdown-container')
+
+ const removeStyle=()=>{
+     if(mediaQuery.matches){
+          dropdownContainer.forEach((e)=>{
+             e.removeAttribute('style');
+          })
+
+          dropdownContainer.forEach((e)=>{
+               e.classList.remove('show-dropdown');
+            })
+          
+     }
+ }
+ addEventListener('resize',removeStyle);
+
+//  const replyBtn1=document.querySelector("#reply-btn-span-1");
+ 
+//  const previousReply1=document.querySelector("#lawyer-previous-reply-1");
+//  const showReply1=document.querySelector("#show-reply-1");
+//  const hideReply1=document.querySelector("#hide-reply-1");
+ 
+ const cancelButtons = document.querySelectorAll(".cnc-btn");
+ const showReplyButtons = document.querySelectorAll(".show-reply-btn");
+ const hideReplyButtons = document.querySelectorAll(".hide-reply-btn");
+ const replyButtons = document.querySelectorAll(".reply-btn-span");
+ 
+
+ showReplyButtons.forEach(button=>{
+    button.onclick = () => {
+        const commentId = button.dataset.commentId;
+        const replies = document.querySelectorAll(`.lawyer-previous-reply[data-comment-id='${commentId}']`);
+        
+        replies.forEach(reply => {
+            reply.classList.add("para-active")
+        })
+    }
+ })
+
+ hideReplyButtons.forEach(button=>{
+    button.onclick = () => {
+        const commentId = button.dataset.commentId;
+        const replies = document.querySelectorAll(`.lawyer-previous-reply[data-comment-id='${commentId}']`);
+        replies.forEach(reply => {
+            reply.classList.remove("para-active")
+        })
+    }
+ })
+
+ replyButtons.forEach(button=>{
+   button.onclick = () => {
+      const commentId = button.dataset.commentId;
+      const replies = document.querySelectorAll(`.lawyer-reply-para[data-comment-id='${commentId}']`);
+      replies.forEach(reply=> {
+        reply.classList.add("para-active")
+      })
+   }
+ })
+ 
+ cancelButtons.forEach(button=>{
+    button.onclick = () => {
+        const commentId = button.dataset.commentId;
+        const replies = document.querySelectorAll(`.lawyer-reply-para[data-comment-id='${commentId}']`);
+        replies.forEach(reply=> {
+            reply.classList.remove("para-active")
+        })
+    }
+ })
+
+//  showReply1.onclick=()=>{
+//   previousReply1.classList.add("para-active");
+//  }
+//  hideReply1.onclick=()=>{
+//   previousReply1.classList.remove("para-active");
+//  }
+
+ const allstar=document.querySelectorAll(".star");
+ const ratingValue=document.querySelector(".reveiew-rating input");
+
+ allstar.forEach((item, idx)=>{
+    item.addEventListener('click', function(){
+     let click=0;
+     ratingValue.value = idx + 1;
+     console.log(ratingValue.value);
+     allstar.forEach(i=>{
+         i.classList.remove('star-checked');
+         i.classList.remove('active');
+     })
+     for (let i=0; i<allstar.length; i++){
+          if(i<=idx){
+               allstar[i].classList.add('star-checked');
+               allstar[i].classList.add('active');
+          }
+          else{
+               allstar[i].style.setProperty('--i',click);
+               click++
+          }
+     }
+    })
+ })
+ document.addEventListener('DOMContentLoaded',()=>{
+    const userId = document.getElementById('userId').value;
+    const articleId = document.getElementById('articleId').value;
+    const likeButton = document.getElementById('like-button');
+    const likeCount = document.getElementById('like-count');
+    const userLiked = likeButton.dataset.userLiked==='true';
+    if(userLiked){
+        likeButton.classList.add('liked');
+    } else{
+        likeButton.classList.remove('liked')
+    }
+    // fetch()
+    // if(likeButton){
+    //     const liked = localStorage.getItem(`liked-${articleId}`) === 'true';
+    // if(liked) {
+    //     likeButton.classList.add('liked');
+    // }
+    likeButton.addEventListener('click',async ()=>{
+        try{
+            const response = await fetch('/toggle-like',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({userId, articleId})
+            });
+            if(response.status===401){
+                const data = await response.json();
+                Toastify({
+                    text: data.message,
+                    duration: 3000,
+                    close: true,
+                    gravity: "top",
+                    position: "center",
+                    backgroundColor: "#FF0000",
+                }).showToast();
+                return;
+            }
+            const data = await response.json();
+            if(data.success){
+                // document.getElementById('like-count').innerText=`${data.likeCount} likes`;
+                // this.classList.toggle('liked');
+              if(data.liked){
+                likeButton.classList.add('liked');
+              } else {
+                likeButton.classList.remove('liked');
+              }
+              likeCount.textContent = `${data.likeCount} likes`;
+              }
+                // if(likeButton.classList.contains('liked')){
+                //     likeButton.classList.remove('liked');
+                //     localStorage.setItem(`liked-${articleId}`,'false');
+                // } else{
+                //     likeButton.classList.add('liked'); 
+                //     localStorage.setItem(`liked-${articleId}`,'true');
+                // }
+         
+              // this.innerText = this.classList.contains('liked') ? 'Unlike':'Like';
+            }
+        catch(error){
+            console.error('Error:',error);
+        }
+    
+ })
+ const form1 = document.getElementById('add-review');
+    form1.addEventListener('submit',async(event)=>{
+        event.preventDefault();
+        const formData = new FormData(form1);
+        const json = Object.fromEntries(formData.entries());
+        try{
+            const response = await fetch('/fullarticle/review',{
+                method: 'POST',
+                headers: {
+                  'Content-Type':'application/json'
+                },
+                body: JSON.stringify(json)
+            });
+
+        if (response.status === 401){
+          Toastify({
+          text: 'Please sign in to add a comment.',
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "center",
+          backgroundColor: "#FF0000",
+        }).showToast();
+        return;
+        }
+
+        const data = await response.json();
+        Toastify({
+            text: data.message,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            backgroundColor: data.success? "#4CAF50":"FF0000",
+        }).showToast();
+
+        if(data.success){
+            setTimeout(()=>{ 
+                window.location.href=`fullarticle?articleId=${articleId}`;
+            },1000);
+        }
+        } catch(error){
+            console.error('Error:', error);
+            Toastify({
+            text: "An error occurred. Please try again.",
+            duration: 3000, 
+            close: true, 
+            gravity: "top", 
+            position: "center", 
+            backgroundColor: "#FF0000", 
+          }).showToast();
+        }
+    })
+  
+ const form2 = document.getElementById('add-reply');
+    form2.addEventListener('submit',async(event)=>{
+        event.preventDefault();
+        const formData = new FormData(form2);
+        const json = Object.fromEntries(formData.entries());
+        try{
+            const response = await fetch('/add-reply',{
+                method: 'POST',
+                headers: {
+                  'Content-Type':'application/json'
+                },
+                body: JSON.stringify(json)
+            });
+
+        if (response.status === 401){
+          Toastify({
+          text: 'Please sign in to reply to the review.',
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "center",
+          backgroundColor: "#FF0000",
+        }).showToast();
+        return;
+        }
+
+        const data = await response.json();
+        Toastify({
+            text: data.message,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            backgroundColor: data.success? "#4CAF50":"FF0000",
+        }).showToast();
+
+        if(data.success){
+            setTimeout(()=>{ 
+                window.location.href=`fullarticle?articleId=${articleId}`;
+            },1000);
+        }
+        } catch(error){
+            console.error('Error:', error);
+            Toastify({
+            text: "An error occurred. Please try again.",
+            duration: 3000, 
+            close: true, 
+            gravity: "top", 
+            position: "center", 
+            backgroundColor: "#FF0000", 
+          }).showToast();
+        }
+    })
+
+    const form3 = document.getElementById('replyDel');
+    const replyId = document.getElementById('replyId').value;
+   
+    form3.addEventListener('submit',async(event)=>{
+        event.preventDefault();
+        const formData = new FormData(form3);
+        try{
+            const response = await fetch(`/fullarticle/del-reply/${replyId}?_method=DELETE`,{
+                method: 'POST',
+                body:  formData
+            });
+        const data = await response.json();
+        Toastify({
+            text: data.message,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            backgroundColor: data.success? "#4CAF50":"FF0000",
+        }).showToast();
+
+        if(data.success){
+            setTimeout(()=>{
+                window.location.href=`fullarticle?articleId=${articleId}`;
+            },1000);
+        }
+        } catch(error){
+            console.error('Error:', error);
+            Toastify({
+            text: "An error occurred. Please try again.",
+            duration: 3000, 
+            close: true, 
+            gravity: "top", 
+            position: "center", 
+            backgroundColor: "#FF0000", 
+          }).showToast();
+        }
+    })
+
+    const form4 = document.getElementById('commentDel');
+    const commentId = document.getElementById('commentId').value;
+   
+    form4.addEventListener('submit',async(event)=>{
+   
+        event.preventDefault();
+        const formData = new FormData(form4);
+        const json = Object.fromEntries(formData.entries());
+        try{
+            const response = await fetch(`/fullarticle/comment/${commentId}?_method=DELETE`,{
+                method: 'POST',
+                headers: {
+                   'Content-Type':'application/json'
+                 },
+                body: JSON.stringify(json)
+            });
+        const data = await response.json();
+        Toastify({
+            text: data.message,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            backgroundColor: data.success? "#4CAF50":"FF0000",
+        }).showToast();
+
+        if(data.success){
+            setTimeout(()=>{
+                window.location.href=`fullarticle?articleId=${articleId}`;
+            },1000);
+        }
+        } catch(error){
+            console.error('Error:', error);
+            Toastify({
+            text: "An error occurred. Please try again.",
+            duration: 3000, 
+            close: true, 
+            gravity: "top", 
+            position: "center", 
+            backgroundColor: "#FF0000", 
+          }).showToast();
+        }
+    })
+
+      
+//  const form2 = document.getElementById('add-reply');
+//     form2.addEventListener('submit',async(event)=>{
+//         event.preventDefault();
+//         const formData = new FormData(form2);
+//         const json = Object.fromEntries(formData.entries());
+//         try{
+//             const response = await fetch('/add-reply',{
+//                 method: 'POST',
+//                 headers: {
+//                   'Content-Type':'application/json'
+//                 },
+//                 body: JSON.stringify(json)
+//             });
+
+//         if (response.status === 401){
+//           Toastify({
+//           text: 'Please sign in to reply to the review.',
+//           duration: 3000,
+//           close: true,
+//           gravity: "top",
+//           position: "center",
+//           backgroundColor: "#FF0000",
+//         }).showToast();
+//         return;
+//         }
+
+//         const data = await response.json();
+//         Toastify({
+//             text: data.message,
+//             duration: 3000,
+//             close: true,
+//             gravity: "top",
+//             position: "center",
+//             backgroundColor: data.success? "#4CAF50":"FF0000",
+//         }).showToast();
+
+//         if(data.success){
+//             setTimeout(()=>{ 
+//                 window.location.href=`fullarticle?articleId=${articleId}`;
+//             },1000);
+//         }
+//         } catch(error){
+//             console.error('Error:', error);
+//             Toastify({
+//             text: "An error occurred. Please try again.",
+//             duration: 3000, 
+//             close: true, 
+//             gravity: "top", 
+//             position: "center", 
+//             backgroundColor: "#FF0000", 
+//           }).showToast();
+//         }
+//     })
+ });
+
+
+
+ 
+ 
+</script>
+
+    
+
+       
+</body>
+</html>

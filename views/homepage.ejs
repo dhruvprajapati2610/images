@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iLegal Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"  />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"  />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <link rel="stylesheet" href="swiper-bundle.min.css">
+    <link rel="icon" type="image/png" href="../uploads/logo.png">
+        <link rel="stylesheet" href="homepage.css">
+        
+</head>
+<body>
+     <%- include('partials/header') %>
+
+    <div class="main-body">
+        <div class="sub-body">
+            <div class="gradient-bg">
+                  <div class="find-lawyer-heading">
+                        <h2>Find Your Lawyer. Connect Online.</h2>
+                  </div>
+                  <div class="ilegal-service-heading">
+                        <p>iLegalAdvice is the one place to Find, Book, and Collaborate with your chosen lawyer online</p>
+                  </div>
+                  <div class="find-lawyer-buttons">
+                    <form action="/search-homepage-lawyers" method="get" >
+                         <div class="search-boxes" id="law">
+                            <div class="custom-select-1">
+                                <div class="select-button" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown">
+                                  <span class="selected-value">Law area</span>
+                                  <span class="arrow"></span>
+                                </div>
+                                <ul class="select-dropdown" role="listbox" id="select-dropdown-1">
+                                  <li role="option">
+                                    <input type="radio" id="Divorce" name="law" value="divorce"/>
+                                    <label for="Divorce">Divorce</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Family-Dispute" name="law" value="family-dispute" />
+                                    <label for="Family-Dispute">Family Dispute</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Child-Custody" name="law" value="Child-Custody" />
+                                    <label for="Child-Custody">Child Custody</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Medical-Negligence" name="law" value="medical-negligience" />
+                                    <label for="Medical-Negligence">Medical Negligence</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Criminal" name="law" value="criminal" />
+                                    <label for="Criminal">Criminal</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Property" name="law" value="property"/>
+                                    <label for="Property">Property</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Cyber-Crime" name="law" value="cyber-crime" />
+                                    <label for="Cyber-Crime">Cyber Crime</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Labour-&-Services" name="law" value="labour-&-servies" />
+                                    <label for="Labour-&-Services">Labour & Services</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Landlord" name="law" value="landlord" />
+                                    <label for="Landlord">Landlord</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Trademark-&-copyright" name="law" value="Trademark-&-copyright" />
+                                    <label for="Trademark-&-copyright">Trademark & Copyright</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Startup" name="law" value="startup"/>
+                                    <label for="Startup">Startup</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Custom-&-Central-Excices" name="law"  value="custom-&-central_excices" />
+                                    <label for="Custom-&-Central-Excices">Custom & Central Excices</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Banking-&-Finance" name="law" value="banking-&-Finance" />
+                                    <label for="Banking-&-Finance">Banking & Finance</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Corporate" name="law" value="Corporate" />
+                                    <label for="Corporate">Corporate</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Gst-&-Tax" name="law" value="gst-&-tax" />
+                                    <label for="Gst-&-Tax">Gst & Tax</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Documentation" name="law" value="documentation" />
+                                    <label for="Documentation">Documentation</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Consumer-Court" name="law" value="consumer-court"/>
+                                    <label for="Consumer-Court">Consumer Court</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Civil" name="law" value="civil" />
+                                    <label for="Civil">Civil</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Check-Bounce" name="law" value="Check-Bounce" />
+                                    <label for="Check-Bounce">Check Bounce</label>
+                                  </li>
+                                </ul>
+                              </div>
+                         </div>
+                         <div class="search-boxes" id="Location">
+                            <div class="custom-select-1">
+                                <div class="select-button" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown">
+                                  <span class="selected-value">Location</span>
+                                  <span class="arrow"></span>
+                                </div>
+                                <ul class="select-dropdown" role="listbox" id="select-dropdown-2">
+                                  <li role="option">
+                                    <input type="radio" id="Mumbai" name="city" value="Mumbai" />
+                                    <label for="Mumbai">Mumbai</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Delhi" name="city" value="delhi"/>
+                                    <label for="Delhi">Delhi</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Benguluru" name="city" value="Benguluru"/>
+                                    <label for="Benguluruk">Benguluru</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Chennai" name="city" value="Chennai" />
+                                    <label for="Chennai">Chennai</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Kolkata" name="city" value="Kolkata" />
+                                    <label for="Kolkata">Kolkata</label>
+                                  </li>
+                                </ul>
+                              </div>
+                         </div>
+                         <div class="search-boxes" id="Language">
+                            <div class="custom-select-1">
+                                <div class="select-button" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown">
+                                  <span class="selected-value">Language</span>
+                                  <span class="arrow"></span>
+                                </div>
+                                <ul class="select-dropdown" role="listbox" id="select-dropdown-4">
+                                  <li role="option">
+                                    <input type="radio" id="Assamese" name="homeLanguage" value="Assamese"/>
+                                    <label for="Assamese">Assamese</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Bengali" name="homeLanguage" value="Bengali" />
+                                    <label for="Bengali">Bengali</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Bodo" name="homeLanguage" value="Bodo" />
+                                    <label for="Bodo">Bodo</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Dogri" name="homeLanguage" value="Dogri" />
+                                    <label for="Dogri">Dogri</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="English" name="homeLanguage" value="English" />
+                                    <label for="English">English</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Gujrati" name="homeLanguage" value="Gujarati" />
+                                    <label for="Gujrati">Gujrati</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Hindi" name="homeLanguage" value="hindi" />
+                                    <label for="Hindi">Hindi</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Kannada" name="homeLanguage" value="Kannada" />
+                                    <label for="Kannada">Kannada</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Kashmiri" name="homeLanguage" value="Kashmiri" />
+                                    <label for="Kashmiri">Kashmiri</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Konkani" name="homeLanguage" value="Konkani" />
+                                    <label for="Konkani">Konkani</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Maithili" name="homeLanguage" value="Maithili"/>
+                                    <label for="Maithili">Maithili</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Malayalam" name="homeLanguage" value="Malyalam"/>
+                                    <label for="Malayalam">Malayalam</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Manipuri" name="homeLanguage" value="Manipuri" />
+                                    <label for="Manipuri">Manipuri</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Marathi" name="homeLanguage" value="Marathi" />
+                                    <label for="Marathi">Marathi</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Nepali" name="homeLanguage" value="Nepali"/>
+                                    <label for="Nepali">Nepali</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Oria" name="homeLanguage" value="Oria"/>
+                                    <label for="Oria">Oria</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Punjabi" name="homeLanguage" value="Punjabi" />
+                                    <label for="Punjabi">Punjabi</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Sanskrit" name="homeLanguage" value="Sanskrit"/>
+                                    <label for="Sanskrit">Sanskrit</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Santali" name="homeLanguage" value="Santali" />
+                                    <label for="Santali">Santali</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Sindhu" name="homeLanguage" value="Sindhu" />
+                                    <label for="Sindhu">Sindhu</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Tamil" name="homeLanguage" value="Tamil"/>
+                                    <label for="Tamil">Tamil</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Telegu" name="homeLanguage" value="Telegu"/>
+                                    <label for="Telegu">Telegu</label>
+                                  </li>
+                                  <li role="option">
+                                    <input type="radio" id="Urdu" name="homeLanguage" value="Urdu" />
+                                    <label for="Urdu">Urdu</label>
+                                  </li>
+                                </ul>
+                              </div>
+                         </div>
+                         <div class="find-btn">
+                          <button class="btn"  type="submit" value="Find">
+                            <i class="fa-solid fa-magnifying-glass"></i><span> Find</span>
+                          </button>
+                         </div>
+                        </form>
+                  </div>
+            </div>
+            <div class="sticker-info">
+                 <div class="sticker-heading">
+                      <h2>How does iLegalAdvice work?</h2>
+                 </div>
+                 <div class="stickers">
+                  <div class="sticker-no"><img src="icon_home01.3aca8266.svg" alt=""><p>Use filters to search for a lawyer by area of law, location, language and pricing</p></div>
+                  <div class="sticker-no"><img src="icon_home02.f52d911b.svg" alt=""><p>View lawyer profiles and read verified reviews from real clients</p></div>
+                  <div class="sticker-no"><img src="icon_home04.6b81790d.svg" alt=""><p>Book an appointment online at a time that suits you</p></div>
+                  <div class="sticker-no"><img src="icon_home07.f62f012b.svg" alt=""><p>Upload, sign and comment on legal documents from anywhere</p></div>
+                 </div>
+            </div>
+              <div class="top-rated-lawyers">
+              <div class="top-lawyer-heading">
+                  <h2>Top rated lawyers in India</h2>
+              </div>
+              <div class="card__container swiper lawyers-swiper">
+                 
+                 <div class="card__content lawyer_content">
+                  <div class="swiper-wrapper">
+                  <% lawyers.forEach(lawyer=>{ %>
+                     <div class="profile-box swiper-slide" id="profile-box">
+                         <div class="img-info">
+                          <div class="img-box">
+                             <div class="img-contain">
+                               <img src="<%= lawyer.image %>" alt="">
+                              </div>
+                          </div>
+                          <div class="info-box">
+                               <div class="name"><%= lawyer.name %></div>
+                               <div class="ratings">
+                                <div class="rating-star">
+                                  <% for (let i=1; i<=5; i++) { %>
+                                    <% if(i<= Math.floor(lawyer.average_rating)) { %>
+                                     <span class="fa fa-star rating-checked-reveiew"></span>
+                                    <% } else if(i===Math.ceil(lawyer.average_rating) && !Number.isInteger(lawyer.average_rating)) { %>
+                                     <span class="fa fa-star-half-alt rating-checked"></span>
+                                   <% } else {  %>
+                                     <span class="fa fa-star"></span>
+                                   <% } %>
+                                  <% } %>
+                                </div>
+                                 <span>
+                                  <%=roundToOneDecimalPlace(lawyer.average_rating)%> | <%=lawyer.client_count%>+ user rating
+                                 </span>
+
+                               </div>
+                               <div class="location">
+                                <i class="fa-solid fa-location-dot fa-solid-logo"></i>&nbsp;&nbsp;<%=lawyer.city%>, <%=lawyer.state%>
+                               </div>
+                               <div class="experience">
+                                <i class="fa-solid fa-suitcase fa-solid-logo"></i>&nbsp;&nbsp;<%= lawyer.yrs_exp %> years experience
+                               </div>
+                          </div>
+                          </div>
+                          <div class="full-profile">
+                            
+                              <a href="/lawyersprofile?lawyerId=<%= lawyer.id %>" class="lawyer-profile-redirect">
+                            <button type="submit"  class="full-profile-btn">View Full Profile</button>
+                            </a>
+
+                          </div>
+
+                         
+                          
+                         
+
+                     </div>
+                     <%  }) %>
+                    </div>
+                 </div>    
+               
+                 <div class="swiper-button-next lawyers-swiper-next">
+                  <i class="ri-arrow-right-s-line"></i>
+               </div>
+               
+               <div class="swiper-button-prev lawyers-swiper-prev">
+                  <i class="ri-arrow-left-s-line"></i>
+               </div>
+
+               <div class="swiper-pagination lawyers-swiper-pagination"></div>
+                 
+                </div> 
+            </div>
+            <div class="ipc-section">
+               <div class="ipc-heading">
+                 <h2>IPC Sections in India</h2>
+               </div>
+               <div class="card__container swiper ipc-swiper">
+                  
+                  <div class="card__content ipc_content">
+                     <div class="swiper-wrapper">
+                     <div class="ipc-box swiper-slide" id="ipc-box1">
+                         <div class="ipc-name">
+                            IPC Section 225
+                         </div>
+                         <div class="ipc-info">
+                            
+                            <div class="ipc-deatil">IPC 225 states that anyone who intentionally resists the lawful arrest of another person or tries to rescue someone lawfully detained for an offense can face imprisonment up to two years, and if the offense involved carries more severe punishment, the imprisonment can be up to three to seven years, along with a fine.</div>
+                         </div>
+                         <div class="full-profile-ipc">
+                          <button class="full-profile-ipc-btn">View Details</button>
+                        </div>
+                     </div>
+                     <div class="ipc-box swiper-slide" id="ipc-box2">
+                      <div class="ipc-name">
+                        IPC Section 173
+                     </div>
+                     <div class="ipc-info">
+                       
+                        <div class="ipc-deatil">IPC 173 states that if someone intentionally hinders the delivery of a summons, notice, order, or proclamation from a public servant, they can be punished with up to one month in jail, a fine of up to five hundred rupees, or both; and if the requirement is to appear in a Court of Justice or produce a document, the punishment can be up to six months in jail, a fine of up to one thousand rupees, or both. </div>
+                     </div>
+                     <div class="full-profile-ipc">
+                      <button class="full-profile-ipc-btn">View Details</button>
+                    </div>
+                     </div>
+                     <div class="ipc-box swiper-slide" id="ipc-box3">
+                      <div class="ipc-name">
+                        IPC Section 354
+                     </div>
+                     <div class="ipc-info">
+                   
+                        <div class="ipc-deatil">IPC 354 states that anyone who assaults or uses criminal force against a woman with the intention of outraging her modesty, or knowing that such an act is likely to outrage her modesty, can be punished with imprisonment ranging from one to five years and may also be fined.</div>
+                     </div>
+                     <div class="full-profile-ipc">
+                      <button class="full-profile-ipc-btn">View Details</button>
+                    </div>
+                     </div>
+                      <div class="ipc-box swiper-slide" id="ipc-box4">
+                        <div class="ipc-name">
+                          IPC Section 356
+                       </div>
+                       <div class="ipc-info">
+                          
+                          <div class="ipc-deatil">IPC 356 of the Indian Penal Code states that if someone assaults or uses criminal force against another person while attempting to steal something that person is wearing or carrying, they can be punished with imprisonment for up to two years, or a fine, or both.</div>
+                       </div>
+                       <div class="full-profile-ipc">
+                        <button class="full-profile-ipc-btn">View Details</button>
+                      </div>
+                       </div>
+                       <div class="ipc-box swiper-slide" id="ipc-box5">
+                        <div class="ipc-name">
+                          IPC Section 187
+                       </div>
+                       <div class="ipc-info">
+                     
+                          <div class="ipc-deatil">IPC 187 of the Indian Penal Code states that if someone fails to assist a public servant when legally required to do so, they may be punished with imprisonment or fine. If the assistance is demanded for specific purposes like preventing a crime or apprehending an offender, the punishment may be more severe.</div>
+                       </div>
+                       <div class="full-profile-ipc">
+                        <button class="full-profile-ipc-btn">View Details</button>
+                      </div>
+                       </div>
+                       <div class="ipc-box swiper-slide" id="ipc-box6">
+                        <div class="ipc-name">
+                          IPC Section 175
+                       </div>
+                       <div class="ipc-info">
+                
+                          <div class="ipc-deatil">If someone is legally required to show or hand over a document to a public servant but intentionally fails to do so, they can be punished with up to one month in jail, a fine of up to five hundred rupees, or both; and if the document should be given to a Court of Justice, the punishment can be up to six months in jail, a fine of up to one thousand rupees, or both.</div>
+                       </div>
+                       <div class="full-profile-ipc">
+                        <button class="full-profile-ipc-btn">View Details</button>
+                      </div>
+                       </div>
+                   </div>  
+                  </div>
+                  <div class="swiper-button-next ipc-swiper-next">
+                    <i class="ri-arrow-right-s-line"></i>
+                 </div>
+
+                 <div class="swiper-button-prev ipc-swiper-prev">
+                  <i class="ri-arrow-left-s-line"></i>
+               </div>
+
+               <div class="swiper-pagination ipc-swiper-pagination"></div>
+               </div>
+            </div>
+         
+            
+            
+        </div>
+        <%- include('partials/footer') %>
+    </div>
+ <script src="swiper-bundle.min.js"></script>
+     <script>
+         const showmenu=(toggleId, navId) =>{
+    const toggle = document.getElementById(toggleId),
+          nav=document.getElementById(navId);
+
+          toggle.addEventListener('click',()=>{
+               nav.classList.toggle('show-menu');
+               toggle.classList.toggle('show-icon');
+
+          })
+
+}
+showmenu('nav-toggle','nav-menu');
+
+const dropdownItems = document.querySelectorAll('.dropdown-item')
+
+dropdownItems.forEach((item)=>{
+    const dropdownButton= item.querySelector('.dropdown-button');
+    
+    dropdownButton.addEventListener('click',()=>{
+         const showDropdown= document.querySelector('.show-dropdown')
+
+         toggleItem(item);
+
+         if(showDropdown && showDropdown!==item){
+           toggleItem(showDropdown)
+         }
+    })
+})
+
+const toggleItem = (item) =>{
+     const dropdownContainer = item.querySelector('.dropdown-container');
+     
+     if(item.classList.contains('show-dropdown')){
+          dropdownContainer.removeAttribute('style');
+          item.classList.remove('show-dropdown');
+     }
+     else{
+         
+     dropdownContainer.style.height=dropdownContainer.scrollHeight +'px';
+     item.classList.add('show-dropdown'); 
+     }
+
+
+    
+}
+const mediaQuery=matchMedia('(min-width:1118px)'),
+ dropdownContainer=document.querySelectorAll('.dropdown-container')
+
+ const removeStyle=()=>{
+     if(mediaQuery.matches){
+          dropdownContainer.forEach((e)=>{
+             e.removeAttribute('style');
+          })
+
+          dropdownContainer.forEach((e)=>{
+               e.classList.remove('show-dropdown');
+            })
+          
+     }
+ }
+ addEventListener('resize',removeStyle);
+
+
+ const customSelects = document.querySelectorAll(".custom-select-1");
+ const selectButtons = document.querySelectorAll(".select-button");
+ const selectedValues = document.querySelectorAll(".selected-value");
+ const optionsLists = document.querySelectorAll(".select-dropdown");
+ 
+ customSelects.forEach((customSelect, index) => {
+   const selectBtn = selectButtons[index];
+   const selectedValue = selectedValues[index];
+   const optionsList = optionsLists[index];
+ 
+   selectBtn.addEventListener("click", () => {
+     customSelect.classList.toggle("active");
+     selectBtn.setAttribute(
+       "aria-expanded",
+       selectBtn.getAttribute("aria-expanded") === "true" ? "false" : "true"
+     );
+   });
+ 
+   optionsList.querySelectorAll("li").forEach((option) => {
+     function handler(e) {
+       if ((e.type === "click" && e.clientX !== 0 && e.clientY !== 0) || e.key === "Enter") {
+         selectedValue.textContent = option.children[1].textContent;
+         customSelect.classList.remove("active");
+       }
+     }
+ 
+     option.addEventListener("keyup", handler);
+     option.addEventListener("click", handler);
+   });
+ });
+
+
+
+
+let swiperLawyers = new Swiper(".lawyer_content", {
+  loop: true,
+  spaceBetween: 32,
+  grabCursor: true,
+
+  pagination: {
+    el: ".lawyers-swiper-pagination",
+    clickable: true,
+    dynamicBullets: true,
+  },
+
+  navigation: {
+    nextEl: ".lawyers-swiper-next",
+    prevEl: ".lawyers-swiper-prev",
+  },
+
+  breakpoints:{
+    780: {
+      slidesPerView: 2,
+    },
+    1078: {
+      slidesPerView: 3,
+    },
+  },
+});
+
+
+let swiperIPC = new Swiper(".ipc_content", {
+    loop: true,
+    spaceBetween: 32,
+    grabCursor: true,
+    pagination: {
+        el: ".ipc-swiper-pagination",
+        clickable: true,
+        dynamicBullets: true,
+    },
+    navigation: {
+        nextEl: ".ipc-swiper-next",
+        prevEl: ".ipc-swiper-prev",
+    },
+    breakpoints: {
+        780: {
+            slidesPerView: 2,
+        },
+        1078: {
+            slidesPerView: 3,
+        },
+    },
+});  
+
+
+     </script>
+     </body>
+     </html>

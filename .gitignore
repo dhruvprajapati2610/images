@@ -1,0 +1,364 @@
+node_modules/
+node_modules.zip/
+#this is gitignore
+
+#  else if(formType==='form3'){
+#       (()=>{
+#         var email = req.body.lo_email;
+#         var passw = req.body.lo_password;
+
+#         const query1 = 'SELECT passw FROM clientsignup WHERE email=$1';
+#         const query2 = 'SELECT passw FROM lawyers WHERE email = $1';
+
+#         pool.query(query1,[email])
+#         .then(result1=>{
+#           if(result1.rows.length>0){
+#             const hashedPassword = result1.rows[0].passw;
+#             return bcrypt.compare(passw, hashedPassword);
+#           } else {
+#             return pool.query(query2,[email])
+#             .then(result2=>{
+#               if(result2.rows.length>0) {
+#                 const hashedPassword = result2.rows[0].passw;
+#                 return bcrypt.compare(passw, hashedPassword);
+#               } else {
+#                 return Promise.reject(new Error('No user found with the given email'));
+#               }
+#             })
+#           }
+#         })
+#         .then(match => {
+#           if(match) {
+#             res.redirect('/lawyerspage');
+#           } else {
+#             res.render('home',{message: 'Invalid login credentials, please try again.', success: false});
+#           }
+#         })
+#         .catch(error=>{
+#           console.error('Error:',error.message);
+#           res.render('home',{message: 'User does not exist, please verify email address.', success: false});
+#         })
+#       }) ();
+#     }
+
+
+
+  # const userLiked = document.getElementById('like-button').value;
+
+  #   if(userLiked==='true'){
+  #       likeButton.classList.add('liked');
+  #   } else{
+  #       likeButton.classList.remove('liked')
+  #   }
+
+
+# try{
+#       const page = parseInt(req.query.page, 10) || 1;
+#       const limit = 3;
+#       const offset = (page-1) * limit;
+
+#       const totalLawyersResult = await pool.query('select count(*) from lawyers');
+#       const totalLawyers = parseInt(totalLawyersResult.rows[0].count, 10);
+#       const totalPages = Math.ceil(totalLawyers/limit);
+
+#       const result = await pool.query(`
+#       with review_aggregates as(
+#        select lawyer_id,
+#        avg(rating) as average_rating,
+#        count(client_id) as client_count
+#        from reviews
+#        group by lawyer_id
+#       )
+#        select
+#        l.*,
+#        ra.average_rating,
+#        ra.client_count
+#        from lawyers l
+#        left join review_aggregates ra on l.id=ra.lawyer_id
+#        order by l.name
+#        limit $1 offset $2
+#      `,[limit,offset]);
+
+#       const lawyers = result.rows.map(row=>({
+#       name: row.name,
+#       yrs_exp: row.yrs_exp,
+#       image: row.image,
+#       area_of_prac: row.area_of_prac,
+#       id: row.id,
+#       averageRating: row.average_rating || 0,
+#       clientCount: row.client_count || 0
+#    }));
+                
+
+
+#   // let averageRating = 0;
+#   // let clientCount = 0;
+
+#   // console.log(reviewsResult.rowCount);
+#   res.render('lawyerspage.ejs',{
+#     lawyers,
+#     currentPage: page,
+#     totalPages,
+#     limit,
+#    });
+  
+   
+ 
+# try{
+#       const page = parseInt(req.query.page, 10) || 1;
+#       const limit = 3;
+#       const offset = (page-1) * limit;
+
+#       const totalLawyersResult = await pool.query('select count(*) from lawyers');
+#       const totalLawyers = parseInt(totalLawyersResult.rows[0].count, 10);
+#       const totalPages = Math.ceil(totalLawyers/limit);
+
+#       const result = await pool.query('select * from  lawyers limit $1 offset $2',[limit,offset]);
+#       const lawyers = result.rows.map(row=>({
+#       name: row.name,
+#       yrs_exp: row.yrs_exp,
+#       image: row.image,
+#       area_of_prac: row.area_of_prac,
+#       id: row.id
+#    }));
+                
+#    const reviewsResult= await pool.query(`
+#    with review_aggregates as(
+#     select lawyer_id,
+#     avg(rating) as average_rating,
+#     count(client_id) as client_count
+#     from reviews
+#     group by lawyer_id
+#    )
+#     select
+#     l.*,
+#     ra.average_rating,
+#     ra.client_count
+#     from lawyers l
+#     left join review_aggregates ra on l.id=ra.lawyer_id
+#     order by l.name
+#     limit $1 offset $2 
+#   `);
+
+#   // let averageRating = 0;
+#   // let clientCount = 0;
+
+#   // console.log(reviewsResult.rowCount);
+  
+
+#   if (reviewsResult.rowCount>0){
+#   const reviews = reviewsResult.rows.map(row=>({
+#       average_rating: row.average_rating,
+#       client_count: row.client_count
+#   }))
+#   res.render('lawyerspage.ejs',{
+#     lawyers,
+#     currentPage: page,
+#     totalPages,
+#     limit,
+#     reviews
+#    });
+#   }
+   
+#  } 
+
+
+#review section
+
+#  <div class="reveiew-section">
+#         <% reviews.forEach(review=>{ %>
+#           <div class="reveiew-container">
+#             <div class="reveiew-name-rating">
+#                 <div class="reveiew-name">
+#                  <%= review.name %>
+#                 </div>
+#                 <div class="reveiew-rating">
+#                   <% for (let i=0;i< review.rating; i++) { %>
+#                     <span class="fa fa-star rating-checked-reveiew"></span>
+#                     <% } %>
+#                   <% for (let i=review.rating; i<5; i++) { %>
+#                     <span class="fa fa-star"></span>
+#                     <% } %>
+#                 </div>
+#                 <div class="created-at">
+#                    <%= formatDate(review.created_at) %>
+#                 </div>
+#                 <div class="reveiew-delete">
+#                   <% if(review.client_id===currentUser.id) { %>
+#                     <form action="lawyers/reviews/<%= review.id%>?_method=DELETE" method="post">
+#                     <button type="submit"><i class="fa-solid fa-trash-can"></i></button>
+#                   </form>  
+#                  <% } %>
+          
+#                   <!-- <span class="reveiew-delete-btn" id="reveiew-delete-btn-1">&nbsp;&nbsp;Delete</span> -->
+#                 </div>
+#             </div>
+#             <div class="reveiew-para">
+#              <p><%= review.comment %></p>
+#             </div>
+#             <div class="lawyer-reply">
+#              <div class="reply-btn">
+#              <div class="reply-btn-1">
+#                  <i class="fa-solid fa-reply "></i>
+#                  <span class="reply-btn-span" >Reply</span>
+#              </div>
+#              <div class="reply-btn-2">
+#                  <span class="show-reply">Show replies</span>
+#                  <span class="hide-reply">Hide replies</span>
+#              </div>
+#              </div>
+#              <div class="lawyer-reply-para">
+#                  <form action="/lawyers/<%= lawyer.id%>/review/<%= review.id%>/reply" method="post">
+#                      <textarea name="comment" id="reply-para" cols="40" rows="5"></textarea>
+#                      <div class="btn-ok-cnc">
+#                          <button type="submit" class="ok-btn" >Submit</button>
+#                          <div class="cnc-btn" >Cancel</div>
+#                      </div>
+#                  </form>
+#              </div>
+#              <div class="lawyer-previous-reply" >
+#               <% review.replies.forEach(reply=> { %>
+#                 <div class="p-reply" >
+#                   <!-- <span></span> -->
+#                   <span><a href=""><%=reply.name %></a>   <%= formatDate(reply.created_at)%></span>
+                
+#                   <% if (reply.lawyer_id != null) { %>
+#                     <span><a href=""><%= reply.lawyer_reply %></a> - <%= formatDate(reply.reply_created_at) %> (Lawyer)</span>
+#                   <% } else if (reply.lawyer_id === null) { %>
+#                     <span><a href=""><%= reply.name %></a> - <%= formatDate(reply.reply_created_at) %></span>
+#                   <% } %>
+
+
+#                   <!-- <p></p> -->
+#                   <p><%= reply.comment %></p>
+
+#                 </div>
+#                 <br>
+#               <% }) %>
+                 
+                    
+                     
+                 
+#              </div>
+#          </div>
+#         </div>
+#        <% }) %>
+          
+         
+            
+         
+             
+               
+              
+     
+#         <% }); %>
+#      <!-- </div> -->
+#     </div>
+
+
+
+
+app.post('/logOut',(req,res)=>{
+  req.session.destroy((err)=>{
+    if(err) {
+      return res.redirect('/userAccount');
+    }
+    res.redirect('/signup');
+  })
+})
+
+
+   <% lawyers.forEach(lawyer => { %>
+             <div class="lawyer-box" data-name="<%=lawyer.name%>" data-area="<%=lawyer.area_of_prac%>">
+                 <div class="lawyer-img">
+                  
+                     <div class="image-container">
+                      
+                         <img src="/uploads/<%=lawyer.image%>" width=""  alt="">
+                      </div>  
+                 </div>
+                 
+                 <div class="lawyer-detail">
+                       <div class="lawyer-name">
+                           <span><%= lawyer.name %></span>
+                       </div>
+                       <div class="lawyer-exp-loc">
+                          <div class="lawyer-loc">
+                            <i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;<span>Kailash Hills, Delhi</span>
+                          </div>
+                          <div class="lawyer-exp">
+                            <i class="fa-solid fa-suitcase"></i>&nbsp;&nbsp;<span><%= lawyer.yrs_exp%>years Experience</span>
+                          </div>
+                       </div>
+                
+                </div>
+                 <div class="lawyer-info">      
+                     
+                      <div class="lawyer-rating">
+                        <div class="rating">
+                          <div class="rating-star">
+                           <% for (let i=1; i<=5; i++) { %>
+                              <% if(i<= Math.floor(lawyer.average_rating)) { %>
+                               <span class="fa fa-star rating-checked-reveiew"></span>
+                              <% } else if(i===Math.ceil(lawyer.average_rating) && !Number.isInteger(lawyer.average_rating)) { %>
+                               <span class="fa fa-star-half-alt rating-checked"></span>
+                             <% } else {  %>
+                               <span class="fa fa-star"></span>
+                             <% } %>
+                            <% } %>
+                            
+                          </div>
+                          <div class="rating-info"><%=roundToOneDecimalPlace(lawyer.average_rating)%>|
+                            <%= lawyer.client_count %>+ user<%=lawyer.client_count > 1?'s':''%> rating
+                          </div>
+                        </div>
+                       </div>
+                       
+                      
+                      <div class="skill">
+                        <div class="lawyer-skill">
+                             <h4>Pratice area & Skills</h4>
+                             <p><%=lawyer.area_of_prac%></p>
+                             
+                        </div>
+                        <div class="lawyer-contact">
+                        
+                         
+                          <button  class="contact-btn" data-lawyer-id="<%=lawyer.id%>" value="contact">Contact</button> 
+                      
+                        </div>     
+                      </div>
+                     
+                 
+                 
+                    </div>
+                
+             </div>
+             <% }); %>
+             
+                        
+          </div>
+          <div class="pagination slide-menu">
+              <% if(currentPage>1) {%>
+                <div class="btn-box prev" > <button class="prev-btn" onclick="window.location.href='?page=<%= currentPage - 1 %>&limit=<%= limit %>'"><span><i class="fa-solid fa-angles-right"></i></span></button></div>
+                <% } %>
+              <% for(let i=1;i<= totalPages;i++) { %>
+                <div class="btn-box"  onclick="window.location.href='?page=<%= i %>&limit=<%= limit %>'" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></button> </div>
+                <% } %>
+              <% if(currentPage< totalPages) { %>
+                <div class="btn-box next" id="btnbox-6"> <button class="next-btn" onclick="window.location.href='?page=<%= currentPage + 1 %>&limit=<%= limit %>'"><span><i class="fa-solid fa-angles-right"></i></span></button></div>
+                <% } %>
+             
+          </div>  
+        </div>
+        <div class="search-box-container">
+          <div class="search-box">
+           <form action="#">
+             <input type="search" name="search" placeholder="Search for Lawyers" id="search-bar">
+             <button id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+             </form>
+          </div>
+        </div>
+
+         const searchLawyersResult = `select * from lawyers where name ilike $1 or area_of_prac ilike $1`;
+  const result1 = await client.query(searchLawyersResult,search);

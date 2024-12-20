@@ -1,0 +1,68 @@
+git [33mcommit 6f93caabc31258cb647e3cf83343705b023521e6[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Dhruv Prajapati <dhruvprajapati2610@gmail.com>
+Date:   Wed Feb 28 17:12:04 2024 +0530
+
+    all files
+
+[33mcommit 7bbc5872f152c93746023a0bc5a97afd9e74539d[m
+Author: Dhruv Prajapati <dhruvprajapati2610@gmail.com>
+Date:   Sun Feb 25 13:24:13 2024 +0530
+
+    updated
+
+[33mcommit 0dbed6d814ce68d46b727c4f57fae51d132cf33e[m
+Author: Dhruv Prajapati <dhruvprajapati2610@gmail.com>
+Date:   Fri Feb 23 19:12:48 2024 +0530
+
+    all files
+
+[33mcommit 16822a8e5e52c65c18cd9a542d28d942a1c3e96c[m
+Author: Dhruv Prajapati <dhruvprajapati2610@gmail.com>
+Date:   Fri Feb 23 18:47:43 2024 +0530
+
+    done
+
+[33mcommit 798ae31ac4ee659bbc35a6a66c3f9324f721dc27[m
+Author: Dhruv Prajapati <dhruvprajapati2610@gmail.com>
+Date:   Wed Feb 21 13:52:08 2024 +0530
+
+    added file
+
+[33mcommit c308e13e840dddc8150a47dcc0be67a4dde6c790[m
+Author: Dhruv Prajapati <dhruvprajapati2610@gmail.com>
+Date:   Tue Feb 20 11:30:11 2024 +0530
+
+    initial
+
+[33mcommit e9fd1ba0270c800559881d610ea62d2498277d44[m
+Author: Dhruv Prajapati <dhruvprajapati2610@gmail.com>
+Date:   Mon Feb 19 18:08:54 2024 +0530
+
+    ilegaladvice
+
+[33mcommit 10d2cfb8a127052f9418446625ce04223673d3dd[m
+Author: Dhruv Prajapati <dhruvprajapati2610@gmail.com>
+Date:   Mon Feb 19 17:33:51 2024 +0530
+
+    first commit
+
+
+    <div id="paginationContainer" data-current-page="<%=currentPage%>" class="pagination slide-menu">
+              <% if(currentPage>1) {%>
+                <div class="btn-box prev" > <button class="prev-btn" onclick="window.location.href='?page=<%= currentPage - 1 %>&limit=<%= limit %>'"><span><i class="fa-solid fa-angles-right"></i></span></button></div>
+                <% } %>
+              <% for(let i=1;i<= totalPages;i++) { %>
+              
+                <div class="btn-box"  onclick="window.location.href='?page=<%= i %>&limit=<%= limit %>'" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></button> </div>
+                <% } %>
+              <% if(currentPage< totalPages) { %>
+              
+                <div class="btn-box next" id="btnbox-6"> <button class="next-btn" onclick="window.location.href='?page=<%= currentPage + 1 %>&limit=<%= limit %>'"><span><i class="fa-solid fa-angles-right"></i></span></button></div>
+                <% } %>
+             
+          </div>  
+
+
+                  <% if(noResults) { %>
+              <p class="law-title">No results found</p>
+          <%  } else { %>

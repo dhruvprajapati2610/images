@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iLegal Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../uploads/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+
+        <link rel="stylesheet" href="/css/lawyerpage.css">
+
+       
+        
+</head>
+<body>
+  <%- include('partials/header') %>
+    
+  <div class="body">   
+     <div class="main-body">
+        <div class="filter-container">
+            <div class="title-container">
+             <div class="title">
+              <i class="fa-solid fa-sliders"></i><h2>Filters</h2>
+             </div>
+            </div>  
+            <div class="filters">
+            <form id="filterForm" method="get" action="/filter-lawyers">
+             <div class="filter-btn">
+                <ul>
+                  <li class="filter-box custom-select">
+                    <div class="custom-select-g">
+                      <div class="select-button-g" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown-1">
+                          <span class="selected-value-g">Select state</span>
+                          <span class="arrow-g"></span>
+                      </div>
+                      <ul class="select-dropdown-g" role="listbox" id="select-dropdown-1">
+                     
+                          <li role="option-g">
+                              <input type="radio" id="andhra_pradesh" name="state" value="andhra_pradesh" />
+                              <label for="andhra_pradesh">Andhra Pradesh</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="arunachal_pradesh" name="state" value="arunachal_pradesh" />
+                              <label for="arunachal_pradesh">Arunachal Pradesh</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="assam" name="state" value="assam" />
+                              <label for="assam">Assam</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="bihar" name="state" value="bihar" />
+                              <label for="bihar">Bihar</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="chhattisgarh" name="state" value="chhattisgarh" />
+                              <label for="chhattisgarh">Chhattisgarh</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="goa" name="state" value="goa" />
+                              <label for="goa">Goa</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="gujarat" name="state" value="gujarat" />
+                              <label for="gujarat">Gujarat</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="haryana" name="state" value="haryana" />
+                              <label for="haryana">Haryana</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="himachal_pradesh" name="state" value="himachal_pradesh" />
+                              <label for="himachal_pradesh">Himachal Pradesh</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="jharkhand" name="state" value="jharkhand" />
+                              <label for="jharkhand">Jharkhand</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="karnataka" name="state" value="karnataka" />
+                              <label for="karnataka">Karnataka</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="kerala" name="state" value="kerala" />
+                              <label for="kerala">Kerala</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="madhya_pradesh" name="state" value="madhya_pradesh" />
+                              <label for="madhya_pradesh">Madhya Pradesh</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="maharashtra" name="state" value="maharashtra" />
+                              <label for="maharashtra">Maharashtra</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="manipur" name="state" value="manipur" />
+                              <label for="manipur">Manipur</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="meghalaya" name="state" value="meghalaya" />
+                              <label for="meghalaya">Meghalaya</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="mizoram" name="state" value="mizoram" />
+                              <label for="mizoram">Mizoram</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="nagaland" name="state" value="nagaland" />
+                              <label for="nagaland">Nagaland</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="odisha" name="state" value="odisha" />
+                              <label for="odisha">Odisha</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="punjab" name="state" value="punjab" />
+                              <label for="punjab">Punjab</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="rajasthan" name="state" value="rajasthan" />
+                              <label for="rajasthan">Rajasthan</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="sikkim" name="state" value="sikkim" />
+                              <label for="sikkim">Sikkim</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="tamil_nadu" name="state" value="tamil_nadu" />
+                              <label for="tamil_nadu">Tamil Nadu</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="telangana" name="state" value="telangana" />
+                              <label for="telangana">Telangana</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="tripura" name="state" value="tripura" />
+                              <label for="tripura">Tripura</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="uttar_pradesh" name="state" value="uttar_pradesh" />
+                              <label for="uttar_pradesh">Uttar Pradesh</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="uttarakhand" name="state" value="uttarakhand" />
+                              <label for="uttarakhand">Uttarakhand</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="west_bengal" name="state" value="west_bengal" />
+                              <label for="west_bengal">West Bengal</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="andaman_nicobar_islands" name="state" value="andaman_nicobar_islands" />
+                              <label for="andaman_nicobar_islands">Andaman and Nicobar Islands</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="chandigarh" name="state" value="chandigarh" />
+                              <label for="chandigarh">Chandigarh</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="dadar_nagar_haveli" name="state" value="dadar_nagar_haveli" />
+                              <label for="dadar_nagar_haveli">Dadra and Nagar Haveli</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="daman_diu" name="state" value="daman_diu" />
+                              <label for="daman_diu">Daman Diu</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="delhi" name="state" value="delhi" />
+                              <label for="delhi">Delhi</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="jammu_kashmir" name="state" value="jammu_kashmir" />
+                              <label for="jammu_kashmir">Jammu and Kashmir</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="ladakh" name="state" value="ladakh" />
+                              <label for="ladakh">Ladakh</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="lakshadweep" name="state" value="lakshadweep" />
+                              <label for="lakshadweep">Lakshadweep</label>
+                          </li>
+                          <li role="option-g">
+                              <input type="radio" id="puducherry" name="state" value="puducherry" />
+                              <label for="puducherry">Puducherry</label>
+                          </li>
+                      </ul>
+                  </div>
+                  </li>
+                  <li class="filter-box custom-select">
+                    <div class="custom-select-g">
+                      <div class="select-button-g" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown-2">
+                          <span class="selected-value-g" name="cityFilter">Select city</span>
+                          <span class="arrow-g"></span>
+                      </div>
+                      <ul class="select-dropdown-g" role="listbox" id="select-dropdown-2">
+                      </ul>
+                  </div>
+                  </li>
+                    <li class="filter-box custom-select">
+                      <div class="custom-select-n" style="width:200px;">
+                        <select name="experience">
+                          <option value="">Select Experience</option>
+                          <option value="Less than 5 Years">Less than 5 Years</option>
+                          <option value="5-10">5-10 Years</option>
+                          <option value="10-15">10-15 Years</option>
+                          <option value="15-20">15-20 Years</option>
+                          <option value="Greater than 20 Years"> Greater than 20 Years</option>
+                          
+                        </select>
+                      </div>
+                      <!-- <div class="custom-select-1">
+                            <button class="select-button" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown">
+                              <span class="selected-value">Select Experience</span>
+                              <span class="arrow"></span>
+                            </button>
+                            <ul class="select-dropdown" role="listbox" id="select-dropdown-3">
+                              <li role="option">
+                                <input type="radio" id="Lessthan-five-years" name="experience" value="Less than 5 years" />
+                                <label for="Lessthan-five-years"> Less than 5 Years </label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Five-ten-years" name="experience" value="5-10"/>
+                                <label for="Five-ten-years">5-10 Years</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Ten-fifteen-years" name="experience" value="10-15"/>
+                                <label for="Ten-fifteen-years">10-15 Years</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Fifteen-twenty-years" name="experience" value="15-20" />
+                                <label for="Fifteen-twenty-years">15-20 Years</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Greaterthan-twenty-years" name="experience" value="Greater than 20 years" />
+                                <label for="Greaterthan-twenty-years"> Greater than 20 Years</label>
+                              </li>
+                            </ul>
+                          </div> -->
+                    </li>
+                    <li class="filter-box custom-select">
+                        <div class="custom-select-n" style="width:200px;">
+                            <select name="language">
+                              <option value="">Select Language</option>
+                              <option value="Assamese">Assamese</option>
+                              <option value="Bengali">Bengali</option>
+                              <option value="Bodo">Bodo</option>
+                              <option value="Dogri">Dogri</option>
+                              <option value="Gujarati">Gujarati</option>
+                              <option value="Hindi">Hindi</option>
+                              <option value="English">English</option>
+                              <option value="Kannada">Kannada</option>
+                              <option value="Kashmiri">Kashmiri</option>
+                              <option value="Konkani">Konkani</option>
+                              <option value="Maithili">Maithili</option>
+                              <option value="Malayalam">Malayalam</option>
+                              <option value="Manipuri">Manipuri</option>
+                              <option value="Marathi">Marathi</option>
+                              <option value="Nepali">Nepali</option>
+                              <option value="Odia">Odia</option>
+                              <option value="Punjabi">Punjabi</option>
+                              <option value="Sanskrit">Sanskrit</option>
+                              <option value="Santali">Santali</option>
+                              <option value="Sindhi">Sindhi</option>
+                              <option value="Tamil">Tamil</option>
+                              <option value="Telugu">Telugu</option>
+                              <option value="Urdu">Urdu</option>
+                            </select>
+                          </div>
+                          
+                        <!-- <div class="custom-select-1">
+                            <button class="select-button" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown">
+                              <span class="selected-value">Select language</span>
+                              <span class="arrow"></span>
+                            </button>
+                            <ul class="select-dropdown" role="listbox" id="select-dropdown-4">
+                              <li role="option">
+                                <input type="radio" id="Assamese" name="language" value="Assamese" />
+                                <label for="Assamese">Assamese</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Bengali" name="language" value="Bengali" />
+                                <label for="Bengali">Bengali</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Bodo" name="language" value="Bodo"/>
+                                <label for="Bodo">Bodo</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Dogri" name="language" value="Dogri" />
+                                <label for="Dogri">Dogri</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="English" name="language"  value="English"/>
+                                <label for="English">English</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Gujrati" name="language" value="Gujarati" />
+                                <label for="Gujrati">Gujrati</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Hindi" name="language" value="Hindi" />
+                                <label for="Hindi">Hindi</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Kannada" name="language" value="Kannada"/>
+                                <label for="Kannada">Kannada</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Kashmiri" name="language" value="Kashmiri" />
+                                <label for="Kashmiri">Kashmiri</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Konkani" name="language" value="Konkani"/>
+                                <label for="Konkani">Konkani</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Maithili" name="language" value="Maithili" />
+                                <label for="Maithili">Maithili</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Malayalam" name="language" value="Malyalam" />
+                                <label for="Malayalam">Malayalam</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Manipuri" name="language" value="Manipuri"/>
+                                <label for="Manipuri">Manipuri</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Marathi" name="language" value="Marathi" />
+                                <label for="Marathi">Marathi</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Nepali" name="language" value="Nepali"/>
+                                <label for="Nepali">Nepali</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Oria" name="language" value="Oria" />
+                                <label for="Oria">Oria</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Punjabi" name="language" value="Punjabi" />
+                                <label for="Punjabi">Punjabi</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Sanskrit" name="language" value="Sanskrit"/>
+                                <label for="Sanskrit">Sanskrit</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Santali" name="language" value="Santali" />
+                                <label for="Santali">Santali</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Sindhu" name="language" value="Sindhu"/>
+                                <label for="Sindhu">Sindhu</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Tamil" name="language" value="Tamil" />
+                                <label for="Tamil">Tamil</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Telegu" name="language" value="Telugu"/>
+                                <label for="Telegu">Telegu</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Urdu" name="language" value="Urdu"/>
+                                <label for="Urdu">Urdu</label>
+                              </li>
+                              
+                            </ul>
+                           
+                          </div> -->
+                    </li>
+                    <li class="filter-box custom-select">
+                        <div class="custom-select-n" style="width:200px;">
+                            <select name="gender">
+                              <option value="">Select Gender</option>
+                              <option value="Male">Male</option>
+                              <option value="Female">Female</option>
+                              <option value="Non-binary">Non-binary</option>
+                              <option value="Transgender">Transgender</option>
+                              <option value="Other">Other</option>
+                              <option value="Prefer not to say">Prefer not to say</option>
+                            </select>
+                          </div>
+                          
+                        <!-- <div class="custom-select-1">
+                            <button class="select-button" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown">
+                              <span class="selected-value">Select Gender</span>
+                              <span class="arrow"></span>
+                            </button>
+                            <ul class="select-dropdown" role="listbox" id="select-dropdown-5">
+                              <li role="option">
+                                <input type="radio" id="Male" name="gender" value="male" />
+                                <label for="Male">Male</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Female" name="gender" value="female" />
+                                <label for="Female">Female</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Other" name="gender" value="other" />
+                                <label for="Other">Other</label>
+                              </li>
+                              
+                            </ul>
+                          </div> -->
+                    </li>
+                    <li class="filter-box custom-select">
+                        <div class="custom-select-n" style="width:200px;">
+                            <select name="areaofpractice">
+                              <option value="">Select Area of Practice</option>
+                              <option value="Divorce">Divorce</option>
+                              <option value="Family Dispute">Family Dispute</option>
+                              <option value="Child Custody">Child Custody</option>
+                              <option value="Medical Negligence">Medical Negligence</option>
+                              <option value="Criminal">Criminal</option>
+                              <option value="Property">Property</option>
+                              <option value="Cyber Crime">Cyber Crime</option>
+                              <option value="Labour & Services">Labour & Services</option>
+                              <option value="Landlord">Landlord</option>
+                              <option value="Trademark & copyright">Trademark & Copyright</option>
+                              <option value="Startup">Startup</option>
+                              <option value="Custom & Central Excises">Custom & Central Excises</option>
+                              <option value="Banking & Finance">Banking & Finance</option>
+                              <option value="Corporate">Corporate</option>
+                              <option value="Gst & Tax">Gst & Tax</option>
+                              <option value="Documentation">Documentation</option>
+                              <option value="Consumer Court">Consumer Court</option>
+                              <option value="Civil">Civil</option>
+                              <option value="Check Bounce">Check Bounce</option>
+                            </select>
+                          </div>
+                          
+                      <!-- <div class="custom-select-1">
+                        <div class="select-button" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown">
+                          <span class="selected-value">Area of Pratice </span>
+                          <span class="arrow"></span>
+                        </div>
+                        <ul class="select-dropdown select-dropdown-2" role="listbox" id="select-dropdown-6">
+                          <li role="option">
+                            <input type="radio" id="Divorce" name="areaofpractice" value="Divorce"/>
+                            <label for="Divorce">Divorce</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Family-Dispute" name="areaofpractice" value="Family Dispute" />
+                            <label for="Family-Dispute">Family Dispute</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Child-Custody" name="areaofpractice"value="Child Custody" />
+                            <label for="Child-Custody">Child Custody</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Medical-Negligence" name="areaofpractice" value="Medical Negligence"/>
+                            <label for="Medical-Negligence">Medical Negligence</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Criminal" name="areaofpractice" value="Criminal"/>
+                            <label for="Criminal">Criminal</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Property" name="areaofpractice" value="Property"/>
+                            <label for="Property">Property</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Cyber-Crime" name="areaofpractice" value="Cyber Crime"/>
+                            <label for="Cyber-Crime">Cyber Crime</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Labour-&-Services" name="areaofpractice" value="Labour & Services"/>
+                            <label for="Labour-&-Services">Labour & Services</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Landlord" name="areaofpractice"value="Landlord"/>
+                            <label for="Landlord">Landlord</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Trademark-&-copyright" name="areaofpractice" value="Trademark & copyright"/>
+                            <label for="Trademark-&-copyright">Trademark & copyright</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Startup" name="areaofpractice" value="Startup"/>
+                            <label for="Startup">Startup</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Custom-&-Central-Excices" name="areaofpractice" value="Custom & Central Excices"/>
+                            <label for="Custom-&-Central-Excices">Custom & Central Excices</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Banking-&-Finance" name="areaofpractice" value="Banking & Finance"/>
+                            <label for="Banking-&-Finance">Banking & Finance</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Corporate" name="areaofpractice" value="Corporate"/>
+                            <label for="Corporate">Corporate</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Gst-&-Tax" name="areaofpractice" value="Gst & Tax"/>
+                            <label for="Gst-&-Tax">Gst & Tax</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Documentation" name="areaofpractice" value="Documentation"/>
+                            <label for="Documentation">Documentation</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Consumer-Court"name="areaofpractice" value="Consumer Court"/>
+                            <label for="Consumer-Court">Consumer Court</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Civil" name="areaofpractice" value="Civil"/>
+                            <label for="Civil">Civil</label>
+                          </li>
+                          <li role="option">
+                            <input type="radio" id="Check-Bounce" name="areaofpractice" value="Check Bounce"/>
+                            <label for="Check-Bounce">Check Bounce</label>
+                          </li>
+                        </ul>
+                      </div> -->
+                  </li>
+                    <li class="filter-box custom-select">
+                        <div class="custom-select-n" style="width:200px;">
+                            <select name="rating">
+                              <option value="">Select Rating</option>
+                              <option value="5">5 Star Rating</option>
+                              <option value="4-5">4-5 Star Rating</option>
+                              <option value="3-4">3-4 Star Rating</option>
+                              <option value="2-3">2-3 Star Rating</option>
+                              <option value="1-2">1-2 Star Rating</option>
+                            </select>
+                          </div>
+                          
+                        <!-- <div class="custom-select-1">
+                            <button class="select-button" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown">
+                              <span class="selected-value">Select Rating</span>
+                              <span class="arrow"></span>
+                            </button>
+                            <ul class="select-dropdown" role="listbox" id="select-dropdown-7">
+                              <li role="option">
+                                <input type="radio" id="Five-star" name="rating" value="5" />
+                                <label for="Five-star">5 Star Rating</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Four-five-star" name="rating" value="4-5" />
+                                <label for="Four-five-star">4-5 Star Rating</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Three-four-star" name="rating" value="3-4" />
+                                <label for="Three-four-star">3-4 Star Rating</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="Two-three-star" name="rating" value="2-3" />
+                                <label for="Two-three-star">2-3 Star Rating</label>
+                              </li>
+                              <li role="option">
+                                <input type="radio" id="One-two-star" name="rating"value="1-2" />
+                                <label for="One-two-star">1-2 Star Rating</label>
+                              </li>
+                             </ul>
+                          </div> -->
+                    </li>
+                    
+                </ul>
+                
+              </div>
+              
+               <div class="apply-reset">
+                    <button type="submit"  class="apply-reset-btn" id="apply-btn">Apply</button>
+                    
+                    <button class="apply-reset-btn" type="submit"  id="reset-btn">Reset</button>
+                    
+               </div> 
+              </form>
+              <!-- <ul id="dataList"></ul> -->
+            </div>
+        </div>
+        <div class="lawyer-container-0">
+          <div class="lawyer-title-container">
+            <div class="title">
+              <i class="fa-solid fa-sliders"></i><h2>Filters</h2>
+          </div>
+          </div>
+          <div class="lawyer-container">
+           <div class="text-info">
+                  <div class="law-name">
+                       <span>Home / Lawyers</span>
+                  </div>
+                  <div class="law-title">
+                         <h2>Consult best  Lawyers / Advocates in India</h2>
+                  </div>
+                  <div class="law-info">
+                    <p>
+                      Browse through detailed lawyer profiles, categorized by area of expertise, experience, location and more. Each profile includes qualifications, experience and client reviews to ensure you find the right lawyer for your case. Whether you need legal advice, representation, or consultation, our curated directory makes it easy to find the legal support you can trust.Here are some profiles of lawyers:
+                     </p>
+                  </div>
+                  <div class="location-button">
+                  <button id="sendLocationBtn">Lawyers nearby me</button>
+                  </div>
+           </div>
+          </div>
+          <div class="lawyer-box-container" id="lawyers-list">
+            <% if(noResults) { %>
+              <p class="law-title">No results found</p>
+          <%  } else { %>
+
+     
+            <% lawyers.forEach(lawyer => { %>
+              
+             <div class="lawyer-box" data-lawyer-id="<%=lawyer.id%>" data-name="<%=lawyer.name%>" data-area="<%=lawyer.area_of_prac%>">
+                 <div class="lawyer-img">
+                  
+                     <div class="image-container">
+                      
+                         <img src="/uploads/<%=lawyer.image%>" width=""  alt="">
+                      </div> 
+                      <div class="lawyer-contact">
+                        <button  class="contact-btn" data-lawyer-id="<%=lawyer.id%>" value="contact">Contact</button> 
+                      </div>   
+                 </div>
+                 
+                 <div class="lawyer-detail">
+                       <div class="lawyer-name">
+                           <span><%= lawyer.name %></span>
+                       </div>
+                       <div class="lawyer-exp-loc">
+                          <div class="lawyer-loc">
+                            <i class="fa-solid fa-location-dot"></i>&nbsp;&nbsp;<span><%=lawyer.city%>, <%=lawyer.state%></span>
+                          </div>
+                          <div class="lawyer-exp">
+                            <i class="fa-solid fa-suitcase"></i>&nbsp;&nbsp;<span><%= lawyer.yrs_exp%> years Experience</span>
+                          </div>
+                       </div>
+                
+                </div>
+                 <div class="lawyer-info">      
+                     
+                      <div class="lawyer-rating">
+                        <div class="rating">
+                          <div class="rating-star">
+                           <% for (let i=1; i<=5; i++) { %>
+                              <% if(i<= Math.floor(lawyer.average_rating)) { %>
+                               <span class="fa fa-star rating-checked-reveiew"></span>
+                              <% } else if(i===Math.ceil(lawyer.average_rating) && !Number.isInteger(lawyer.average_rating)) { %>
+                               <span class="fa fa-star-half-alt rating-checked"></span>
+                             <% } else {  %>
+                               <span class="fa fa-star"></span>
+                             <% } %>
+                            <% } %>
+                            
+                          </div>
+                          <div class="rating-info"><%=roundToOneDecimalPlace(lawyer.average_rating)%>|
+                            <%= lawyer.client_count %>+ user<%=lawyer.client_count > 1?'s':''%> rating
+                          
+                           
+                           <% if(lawyer.distance){ %>
+                            <strong><%= lawyer.distance %> km</strong>
+                            <% } %>
+                          </div>
+                        </div>
+                       </div>
+                      <div class="skill">
+                        <div class="lawyer-skill">
+                             <h4>Practice area & Skills</h4>
+                             <p><%=lawyer.area_of_prac%></p>
+                        </div>
+                        <div class="lawyer-contact">
+                            <button  class="contact-btn" data-lawyer-id="<%=lawyer.id%>" value="contact">Contact</button> 
+                        </div>     
+                      </div>
+                     
+                 
+                 
+                    </div>
+                   
+             </div>
+             <% }); %>
+             <%   } %>
+                        
+          </div>
+          <div id="paginationContainer" data-current-page="<%= currentPage %>" class="pagination slide-menu">
+           <% if(totalPages>1) { %>
+            <% if(currentPage > 1) { %>
+              <div class="btn-box prev">
+                <button class="prev-btn" onclick="window.location.href='?page=<%= currentPage - 1 %>&limit=<%= limit %>&law=<%= law %>&city=<%= city %>&cityHome=<%=cityFilter%>&state=<%=stateFilter%>&areaofpractice=<%=aopFilter%>&experience=<%=experienceFilter%>&language=<%=languageFilter%>&gender=<%=genderFilter%>&rating=<%=ratingFilter%>&homeLanguage=<%=language%>&search=<%=search%>'">
+                  <span><i class="fa-solid fa-angles-left"></i></span>
+                </button>
+              </div>
+            <% } %>
+          
+            <!-- Always show the first page -->
+            <div class="btn-box <%= currentPage === 1 ? 'active' : '' %>" onclick="window.location.href='?page=1&limit=<%= limit %>&law=<%= law %>&city=<%= city %>&cityHome=<%=cityFilter%>&state=<%=stateFilter%>&areaofpractice=<%=aopFilter%>&experience=<%=experienceFilter%>&language=<%=languageFilter%>&gender=<%=genderFilter%>&rating=<%=ratingFilter%>&homeLanguage=<%=language%>&search=<%=search%>'">
+              1
+            </div>
+          
+            <!-- Show ellipsis if we're more than 2 pages away from the first page -->
+            <% if (currentPage > 3) { %>
+              <span>...</span>
+            <% } %>
+          
+            <!-- Show pages around the current page -->
+            <% for(let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) { %>
+              <div class="btn-box <%= i === currentPage ? 'active' : '' %>" onclick="window.location.href='?page=<%= i %>&limit=<%= limit %>&law=<%= law %>&city=<%= city %>&cityHome=<%=cityFilter%>&state=<%=stateFilter%>&areaofpractice=<%=aopFilter%>&experience=<%=experienceFilter%>&language=<%=languageFilter%>&gender=<%=genderFilter%>&rating=<%=ratingFilter%>&homeLanguage=<%=language%>&search=<%=search%>'">
+                <%= i %>
+              </div>
+            <% } %>
+          
+            <!-- Show ellipsis if we're more than 2 pages away from the last page -->
+            <% if (currentPage < totalPages - 2) { %>
+              <span>...</span>
+            <% } %>
+          
+            <!-- Always show the last page -->
+            <div class="btn-box <%= currentPage === totalPages ? 'active' : '' %>" onclick="window.location.href='?page=<%= totalPages %>&limit=<%= limit %>&law=<%= law %>&city=<%= city %>&cityHome=<%=cityFilter%>&state=<%=stateFilter%>&areaofpractice=<%=aopFilter%>&experience=<%=experienceFilter%>&language=<%=languageFilter%>&gender=<%=genderFilter%>&rating=<%=ratingFilter%>&homeLanguage=<%=language%>&search=<%=search%>'">
+              <%= totalPages %>
+            </div>
+          
+            <!-- Show "Next" button -->
+            <% if(currentPage < totalPages) { %>
+              <div class="btn-box next">
+                <button class="next-btn" onclick="window.location.href='?page=<%= currentPage + 1 %>&limit=<%= limit %>&law=<%= law %>&city=<%= city %>&state=<%=stateFilter%>&areaofpractice=<%=aopFilter%>&experience=<%=experienceFilter%>&language=<%=languageFilter%>&cityHome=<%=cityFilter%>&gender=<%=genderFilter%>&rating=<%=ratingFilter%>&homeLanguage=<%=language%>&search=<%=search%>'">
+                  <span><i class="fa-solid fa-angles-right"></i></span>
+                </button>
+              </div>
+            <% } %>
+            <% } %>
+          </div>
+          
+          
+  
+        </div>
+        <div class="search-box-container">
+          <div class="search-box">
+           <form action="/search-lawyers" method="get">
+             <input type="search" name="search" placeholder="Search for Lawyers" id="search-bar">
+             <button class="searchbtn" id="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+             </form>
+          </div>
+        </div>
+        </div>
+        <%- include('partials/footer') %>   
+          
+    </div>
+  
+     
+
+    <script >
+      
+    // document.getElementById('search-button').addEventListener('click',()=>{
+    //   filterLawyers();
+    // });
+
+    // document.getElementById('search-bar').addEventListener('input',()=>{
+    //   filterLawyers();
+    // })
+
+    // function filterLawyers(){
+    //   const query = document.getElementById('search-bar').value.trim().toLowerCase();
+    //   const lawyers = document.querySelectorAll('.lawyer-box');
+
+    //   if(!query) {
+    //     lawyers.forEach(lawyer => {
+    //       lawyer.style.display = 'block';
+    //     });
+    //     return;
+    //   }
+
+    //   lawyers.forEach(lawyer=>{
+    //     const name = lawyer.dataset.name.toLowerCase();
+    //     const area = lawyer.dataset.area.toLowerCase();
+    //     if(name.includes(query) || area.includes(query)){
+    //       // lawyer.style.display = 'block';
+    //     } else{
+    //       lawyer.style.display = 'none';
+    //     }
+    //   })
+    // }
+    // const filterForm = document.getElementById('filterForm');
+    // const dataList = document.getElementById('dataList');
+
+    // document.getElementById('filterForm').addEventListener('submit', function(event){
+    //   event.preventDefault();
+    //   const formData = new FormData(this);
+    //   const queryParams = new URLSearchParams(formData).toString();
+    //   fetch(`/filter-lawyers?${queryParams}`)
+    //   .then(response=>response.json())
+    //   .then(data=>{
+    //     console.log(data);
+    //   }) 
+    //   .catch(error=>console.error('Error:',error));
+    // })
+
+    // filterForm.addEventListener('submit',async(event)=>{
+    //   event.preventDefault();
+    //   const nameCityValue = document.getElementById('select-dropdown-1').value;
+    //   const nameCourtValue = document.getElementById('select-dropdown-2').value;
+    //   const nameExperienceValue = document.getElementById('select-dropdown-3').value;
+    //   const nameLanguageValue = document.getElementById('select-dropdown-4').value;
+    //   const nameGenderValue = document.getElementById('select-dropdown-5').value;
+    //   const nameRatingValue = document.getElementById('select-dropdown-6').value;
+
+    //   const url = `/lawyerspage?city=${nameCityValue}&court=${nameCourtValue}&experience=${nameExperienceValue}&language=${nameLanguageValue}&gender=${nameGenderValue}&rating=${nameRatingValue}`;
+    //   const response =  await fetch(url);
+    // });
+     
+  //    function renderData(data){
+  //    dataList.innerHTML = ''
+  //    data.forEach(item=>{
+  //     const li = document.createElement('li');
+  //     li.textContent = JSON.stringify(item);
+  //     dataList.appendChild(li);
+  //    });
+  //  }
+
+
+        const showmenu=(toggleId, navId) =>{
+    const toggle = document.getElementById(toggleId),
+          nav=document.getElementById(navId);
+
+          toggle.addEventListener('click',()=>{
+               nav.classList.toggle('show-menu');
+               toggle.classList.toggle('show-icon');
+
+          })
+}
+showmenu('nav-toggle','nav-menu');
+
+const dropdownItems = document.querySelectorAll('.dropdown-item')
+
+dropdownItems.forEach((item)=>{
+    const dropdownButton= item.querySelector('.dropdown-button');
+    
+    dropdownButton.addEventListener('click',()=>{
+         const showDropdown= document.querySelector('.show-dropdown')
+
+         toggleItem(item);
+
+         if(showDropdown && showDropdown!==item){
+           toggleItem(showDropdown)
+         }
+    })
+})
+
+const toggleItem = (item) =>{
+     const dropdownContainer = item.querySelector('.dropdown-container');
+     
+     if(item.classList.contains('show-dropdown')){
+          dropdownContainer.removeAttribute('style');
+          item.classList.remove('show-dropdown');
+     }
+     else{
+         
+     dropdownContainer.style.height=dropdownContainer.scrollHeight +'px';
+     item.classList.add('show-dropdown'); 
+     }
+
+
+    
+}
+const mediaQuery=matchMedia('(min-width:1118px)'),
+ dropdownContainer=document.querySelectorAll('.dropdown-container')
+
+ const removeStyle=()=>{
+     if(mediaQuery.matches){
+          dropdownContainer.forEach((e)=>{
+             e.removeAttribute('style');
+          })
+            dropdownContainer.forEach((e)=>{
+               e.classList.remove('show-dropdown');
+            })   
+     }
+ }
+ addEventListener('resize',removeStyle);
+
+
+ const customSelects = document.querySelectorAll(".custom-select-1");
+ const selectButtons = document.querySelectorAll(".select-button");
+ const selectedValues = document.querySelectorAll(".selected-value");
+ const optionsLists = document.querySelectorAll(".select-dropdown");
+ const isPhoneView = window.matchMedia("(max-width: 640px)").matches;
+ //console.log(isPhoneView);
+ document.addEventListener('DOMContentLoaded', () => {
+
+if(isPhoneView){
+  console.log(isPhoneView)
+  // console.log("hello")
+  const viewLawyerButtons = document.querySelectorAll('.lawyer-box');
+  //console.log(viewLawyerButtons);
+ viewLawyerButtons.forEach(function(button){
+  
+  button.addEventListener('click',async(event)=>{
+    console.log(event)
+    const lawyerId = button.dataset.lawyerId;
+    try{
+      const response = await fetch(`/lawyersprofile?lawyerId=${lawyerId}`,{
+        method: 'GET',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        // body: JSON.stringify({ lawyerId })
+      })
+      if(response.ok){
+        window.location.href = `/lawyersprofile?lawyerId=${lawyerId}`;
+      } else {
+        const errorData = await response.json();
+        console.error('Error fetching lawyer profile:', errorData);
+      }
+    } catch(error){
+      console.error('error:',error);
+    }
+  })
+ })
+
+}
+else{
+   console.log(isPhoneView)
+   console.log("hello2")
+   const viewLawyerButtons = document.querySelectorAll('.contact-btn');
+ viewLawyerButtons.forEach(button=>{
+  button.addEventListener('click',async(event)=>{
+    const lawyerId = event.target.dataset.lawyerId;
+    try{
+      const response = await fetch(`/lawyersprofile?lawyerId=${lawyerId}`,{
+        method: 'GET',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        // body: JSON.stringify({ lawyerId })
+      })
+      if(response.ok){
+        window.location.href = `/lawyersprofile?lawyerId=${lawyerId}`;
+      } else {
+        const errorData = await response.json();
+        console.error('Error fetching lawyer profile:', errorData);
+      }
+    } catch(error){
+      console.error('error:',error);
+    }
+  })
+ })
+}
+ 
+});
+
+ customSelects.forEach((customSelect, index) => {
+   const selectBtn = selectButtons[index];
+   const selectedValue = selectedValues[index];
+   const optionsList = optionsLists[index];
+ 
+   selectBtn.addEventListener("click", () => {
+     customSelect.classList.toggle("active");
+     selectBtn.setAttribute(
+       "aria-expanded",
+       selectBtn.getAttribute("aria-expanded") === "true" ? "false" : "true"
+     );
+   });
+ 
+   optionsList.querySelectorAll("li").forEach((option) => {
+     function handler(e) {
+       if ((e.type === "click" && e.clientX !== 0 && e.clientY !== 0) || e.key === "Enter") {
+         selectedValue.textContent = option.children[1].textContent;
+         customSelect.classList.remove("active");
+       }
+     }
+ 
+     option.addEventListener("keyup", handler);
+     option.addEventListener("click", handler);
+   });
+ });
+
+ var x, i, j, l, ll, selElmnt, a, b, c;
+/* Look for any elements with the class "custom-select": */
+x = document.getElementsByClassName("custom-select-n");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /* For each element, create a new DIV that will act as the selected item: */
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /* For each element, create a new DIV that will contain the option list: */
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /* For each option in the original select element,
+    create a new DIV that will act as an option item: */
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /* When an item is clicked, update the original select box,
+        and the selected item: */
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+    /* When the select box is clicked, close any other select boxes,
+    and open/close the current select box: */
+    e.stopPropagation();
+    closeAllSelect(this);
+    this.nextSibling.classList.toggle("select-hide");
+    this.classList.toggle("select-arrow-active");
+  });
+}
+
+function closeAllSelect(elmnt) {
+  /* A function that will close all select boxes in the document,
+  except the current select box: */
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+
+/* If the user clicks anywhere outside the select box,
+then close all select boxes: */
+document.addEventListener("click", closeAllSelect);
+
+
+
+
+
+
+
+
+ const customSelectsG = document.querySelectorAll(".custom-select-g");
+const selectButtonsG = document.querySelectorAll(".select-button-g");
+const selectedValuesG = document.querySelectorAll(".selected-value-g");
+const optionsListsG = document.querySelectorAll(".select-dropdown-g");
+
+
+const stateToCities = {
+    andhra_pradesh : ["Anantapur","Chittoor","East Godavari","Guntur","Kadapa","Krishna","Kurnool","Prakasam","Nellore","Srikakulam","Visakhapatnam","Vizianagaram","West Godavari"],
+    arunachal_pradesh : ["Anjaw","Changlang","Dibang Valley","East Kameng","East Siang","Kra Daadi","Kurung Kumey","Lohit","Longding","Lower Dibang Valley","Lower Subansiri","Namsai","Papum Pare","Siang","Tawang","Tirap","Upper Siang","Upper Subansiri","West Kameng","West Siang","Itanagar"],
+    assam : ["Baksa","Barpeta","Biswanath","Bongaigaon","Cachar","Charaideo","Chirang","Darrang","Dhemaji","Dhubri","Dibrugarh","Goalpara","Golaghat","Hailakandi","Hojai","Jorhat","Kamrup Metropolitan","Kamrup (Rural)","Karbi Anglong","Karimganj","Kokrajhar","Lakhimpur","Majuli","Morigaon","Nagaon","Nalbari","Dima Hasao","Sivasagar","Sonitpur","South Salmara Mankachar","Tinsukia","Udalguri","West Karbi Anglong"],
+    bihar : ["Araria","Arwal","Aurangabad","Banka","Begusarai","Bhagalpur","Bhojpur","Buxar","Darbhanga","East Champaran","Gaya","Gopalganj","Jamui","Jehanabad","Kaimur","Katihar","Khagaria","Kishanganj","Lakhisarai","Madhepura","Madhubani","Munger","Muzaffarpur","Nalanda","Nawada","Patna","Purnia","Rohtas","Saharsa","Samastipur","Saran","Sheikhpura","Sheohar","Sitamarhi","Siwan","Supaul","Vaishali","West Champaran"],
+    chhattisgarh : ["Balod","Baloda Bazar","Balrampur","Bastar","Bemetara","Bijapur","Bilaspur","Dantewada","Dhamtari","Durg","Gariaband","Janjgir Champa","Jashpur","Kabirdham","Kanker","Kondagaon","Korba","Koriya","Mahasamund","Mungeli","Narayanpur","Raigarh","Raipur","Rajnandgaon","Sukma","Surajpur","Surguja"],
+    goa : ["North Goa","South Goa"],
+    gujarat : ["Ahmedabad","Amreli","Anand","Aravalli","Banaskantha","Bharuch","Bhavnagar","Botad","Chhota Udaipur","Dahod","Dang","Devbhoomi Dwarka","Gandhinagar","Gir Somnath","Jamnagar","Junagadh","Kheda","Kutch","Mahisagar","Mehsana","Morbi","Narmada","Navsari","Panchmahal","Patan","Porbandar","Rajkot","Sabarkantha","Surat","Surendranagar","Tapi","Vadodara","Valsad"],
+    haryana : ["Ambala","Bhiwani","Charkhi Dadri","Faridabad","Fatehabad","Gurugram","Hisar","Jhajjar","Jind","Kaithal","Karnal","Kurukshetra","Mahendragarh","Mewat","Palwal","Panchkula","Panipat","Rewari","Rohtak","Sirsa","Sonipat","Yamunanagar"],
+    himachal_pradesh : ["Bilaspur","Chamba","Hamirpur","Kangra","Kinnaur","Kullu","Lahaul Spiti","Mandi","Shimla","Sirmaur","Solan","Una"],
+    jammu_kashmir : ["Anantnag","Bandipora","Baramulla","Budgam","Doda","Ganderbal","Jammu","Kargil","Kathua","Kishtwar","Kulgam","Kupwara","Leh","Poonch","Pulwama","Rajouri","Ramban","Reasi","Samba","Shopian","Srinagar","Udhampur"],
+ jharkhand : ["Bokaro","Chatra","Deoghar","Dhanbad","Dumka","East Singhbhum","Garhwa","Giridih","Godda","Gumla","Hazaribagh","Jamtara","Khunti","Koderma","Latehar","Lohardaga","Pakur","Palamu","Ramgarh","Ranchi","Sahebganj","Seraikela Kharsawan","Simdega","West Singhbhum"],
+ karnataka : ["Bagalkot","Bangalore Rural","Bangalore Urban","Belgaum","Bellary","Bidar","Vijayapura","Chamarajanagar","Chikkaballapur","Chikkamagaluru","Chitradurga","Dakshina Kannada","Davanagere","Dharwad","Gadag","Gulbarga","Hassan","Haveri","Kodagu","Kolar","Koppal","Mandya","Mysore","Raichur","Ramanagara","Shimoga","Tumkur","Udupi","Uttara Kannada","Yadgir"],
+ kerala : ["Alappuzha","Ernakulam","Idukki","Kannur","Kasaragod","Kollam","Kottayam","Kozhikode","Malappuram","Palakkad","Pathanamthitta","Thiruvananthapuram","Thrissur","Wayanad"],
+ madhya_pradesh : ["Agar Malwa","Alirajpur","Anuppur","Ashoknagar","Balaghat","Barwani","Betul","Bhind","Bhopal","Burhanpur","Chhatarpur","Chhindwara","Damoh","Datia","Dewas","Dhar","Dindori","Guna","Gwalior","Harda","Hoshangabad","Indore","Jabalpur","Jhabua","Katni","Khandwa","Khargone","Mandla","Mandsaur","Morena","Narsinghpur","Neemuch","Panna","Raisen","Rajgarh","Ratlam","Rewa","Sagar","Satna",
+"Sehore","Seoni","Shahdol","Shajapur","Sheopur","Shivpuri","Sidhi","Singrauli","Tikamgarh","Ujjain","Umaria","Vidisha"],
+maharashtra : ["Ahmednagar","Akola","Amravati","Aurangabad","Beed","Bhandara","Buldhana","Chandrapur","Dhule","Gadchiroli","Gondia","Hingoli","Jalgaon","Jalna","Kolhapur","Latur","Mumbai City","Mumbai Suburban","Nagpur","Nanded","Nandurbar","Nashik","Navi Mumbai","Osmanabad","Palghar","Parbhani","Pune","Raigad","Ratnagiri","Sangli","Satara","Sindhudurg","Solapur","Thane","Wardha","Washim","Yavatmal"],
+manipur : ["Bishnupur","Chandel","Churachandpur","Imphal East","Imphal West","Jiribam","Kakching","Kamjong","Kangpokpi","Noney","Pherzawl","Senapati","Tamenglong","Tengnoupal","Thoubal","Ukhrul"],
+meghalaya : ["East Garo Hills","East Jaintia Hills","East Khasi Hills","North Garo Hills","Ri Bhoi","South Garo Hills","South West Garo Hills","South West Khasi Hills","West Garo Hills","West Jaintia Hills","West Khasi Hills"],
+mizoram : ["Aizawl","Champhai","Kolasib","Lawngtlai","Lunglei","Mamit","Saiha","Serchhip","Aizawl","Champhai","Kolasib","Lawngtlai","Lunglei","Mamit","Saiha","Serchhip"],
+nagaland : ["Dimapur","Kiphire","Kohima","Longleng","Mokokchung","Mon","Peren","Phek","Tuensang","Wokha","Zunheboto"],
+odisha : ["Angul","Balangir","Balasore","Bargarh","Bhadrak","Boudh","Cuttack","Debagarh","Dhenkanal","Gajapati","Ganjam","Jagatsinghpur","Jajpur","Jharsuguda","Kalahandi","Kandhamal","Kendrapara","Kendujhar","Khordha","Koraput","Malkangiri","Mayurbhanj","Nabarangpur","Nayagarh","Nuapada","Puri","Rayagada","Sambalpur","Subarnapur","Sundergarh"],
+punjab : ["Amritsar","Barnala","Bathinda","Faridkot","Fatehgarh Sahib","Fazilka","Firozpur","Gurdaspur","Hoshiarpur","Jalandhar","Kapurthala","Ludhiana","Mansa","Moga","Mohali","Muktsar","Pathankot","Patiala","Rupnagar","Sangrur","Shaheed Bhagat Singh Nagar","Tarn Taran"],
+rajasthan : ["Ajmer","Alwar","Banswara","Baran","Barmer","Bharatpur","Bhilwara","Bikaner","Bundi","Chittorgarh","Churu","Dausa","Dholpur","Dungarpur","Ganganagar","Hanumangarh","Jaipur","Jaisalmer","Jalore","Jhalawar","Jhunjhunu","Jodhpur","Karauli","Kota","Nagaur","Pali","Pratapgarh","Rajsamand","Sawai Madhopur","Sikar","Sirohi","Tonk","Udaipur"],
+sikkim : ["East Sikkim","North Sikkim","South Sikkim","West Sikkim"],
+tamil_nadu : ["Ariyalur","Chennai","Coimbatore","Cuddalore","Dharmapuri","Dindigul","Erode","Kanchipuram","Kanyakumari","Karur","Krishnagiri","Madurai","Nagapattinam","Namakkal","Nilgiris","Perambalur","Pudukkottai","Ramanathapuram","Salem","Sivaganga","Thanjavur","Theni","Thoothukudi","Tiruchirappalli","Tirunelveli","Tiruppur","Tiruvallur","Tiruvannamalai","Tiruvarur","Vellore","Viluppuram","Virudhunagar"],
+telangana : ["Adilabad","Bhadradri Kothagudem","Hyderabad","Jagtial","Jangaon","Jayashankar","Jogulamba","Kamareddy","Karimnagar","Khammam","Komaram Bheem","Mahabubabad","Mahbubnagar","Mancherial","Medak","Medchal","Nagarkurnool","Nalgonda","Nirmal","Nizamabad","Peddapalli","Rajanna Sircilla","Ranga Reddy","Sangareddy","Siddipet","Suryapet","Vikarabad","Wanaparthy","Warangal Rural","Warangal Urban","Yadadri Bhuvanagiri"],
+tripura : ["Dhalai","Gomati","Khowai","North Tripura","Sepahijala","South Tripura","Unakoti","West Tripura"],
+uttar_pradesh : ["Agra","Aligarh","Allahabad","Ambedkar Nagar","Amethi","Amroha","Auraiya","Azamgarh","Baghpat","Bahraich","Ballia","Balrampur","Banda","Barabanki","Bareilly","Basti","Bhadohi","Bijnor","Budaun","Bulandshahr","Chandauli","Chitrakoot","Deoria","Etah","Etawah","Faizabad","Farrukhabad","Fatehpur","Firozabad","Gautam Buddha Nagar","Ghaziabad","Ghazipur","Gonda","Gorakhpur","Hamirpur","Hapur","Hardoi","Hathras","Jalaun","Jaunpur","Jhansi","Kannauj","Kanpur Dehat","Kanpur Nagar","Kasganj","Kaushambi","Kheri","Kushinagar","Lalitpur","Lucknow","Maharajganj","Mahoba","Mainpuri","Mathura","Mau","Meerut","Mirzapur","Moradabad","Muzaffarnagar","Pilibhit","Pratapgarh","Raebareli","Rampur","Saharanpur","Sambhal","Sant Kabir Nagar","Shahjahanpur","Shamli","Shravasti","Siddharthnagar","Sitapur","Sonbhadra","Sultanpur","Unnao","Varanasi"],
+uttarakhand  : ["Almora","Bageshwar","Chamoli","Champawat","Dehradun","Haridwar","Nainital","Pauri","Pithoragarh","Rudraprayag","Tehri","Udham Singh Nagar","Uttarkashi"],
+west_bengal : ["Alipurduar","Bankura","Birbhum","Cooch Behar","Dakshin Dinajpur","Darjeeling","Hooghly","Howrah","Jalpaiguri","Jhargram","Kalimpong","Kolkata","Malda","Murshidabad","Nadia","North 24 Parganas","Paschim Bardhaman","Paschim Medinipur","Purba Bardhaman","Purba Medinipur","Purulia","South 24 Parganas","Uttar Dinajpur"],
+andaman_nicobar_islands : ["Nicobar","North Middle Andaman","South Andaman"],
+chandigarh: ["Chandigarh"],
+dadar_nagar_haveli_daman_diu: ["Dadra Nagar Haveli"],
+daman_diu : ["Daman","Diu"],
+delhi : ["Central Delhi","East Delhi","New Delhi","North Delhi","North East Delhi","North West Delhi","Shahdara","South Delhi","South East Delhi","South West Delhi","West Delhi"],
+ladakh :["Kargil","Leh"],
+lakshadweep : ["Lakshadweep"],
+puducherry : ["Karaikal","Mahe","Puducherry","Yanam"],
+
+
+};
+
+
+function updateCityDropdown(state) {
+    const cityDropdown = document.querySelector("#select-dropdown-2");
+    const citySelectButton = cityDropdown.previousElementSibling;
+    const citySelectedValue = citySelectButton.querySelector(".selected-value-g");
+
+    
+    cityDropdown.innerHTML = "";
+
+    
+    if (stateToCities[state]) {
+        stateToCities[state].forEach(city => {
+            const cityOption = document.createElement("li");
+            cityOption.setAttribute("role", "option-g");
+            cityOption.innerHTML = `
+                <input type="radio" id="${city}" name="city" value="${city}" />
+                <label for="${city}">${city}</label>
+            `;
+            cityDropdown.appendChild(cityOption);
+
+            cityOption.addEventListener("keyup", function(e) {
+                if (e.key === "Enter") {
+                    citySelectedValue.textContent = cityOption.children[1].textContent;
+                    cityDropdown.parentNode.classList.remove("active");
+                }
+            });
+
+            cityOption.addEventListener("click", function(e) {
+                if (e.clientX !== 0 && e.clientY !== 0) {
+                    citySelectedValue.textContent = cityOption.children[1].textContent;
+                    cityDropdown.parentNode.classList.remove("active");
+                }
+            });
+        });
+    }
+
+  
+    citySelectedValue.textContent = "Select city";
+}
+
+
+function enableCityDropdown() {
+    const cityCustomSelect = document.querySelector("#select-dropdown-2").parentNode;
+    cityCustomSelect.classList.remove("disabled");
+}
+
+
+document.querySelector("#select-dropdown-2").parentNode.classList.add("disabled");
+
+
+customSelectsG.forEach((customSelect, index) => {
+    const selectBtnG = selectButtonsG[index];
+    const selectedValueG = selectedValuesG[index];
+    const optionsListG = optionsListsG[index];
+
+    selectBtnG.addEventListener("click", () => {
+        
+        if (!customSelect.classList.contains("disabled")) {
+            customSelect.classList.toggle("active");
+            selectBtnG.setAttribute(
+                "aria-expanded",
+                selectBtnG.getAttribute("aria-expanded") === "true" ? "false" : "true"
+            );
+        }
+    });
+
+    optionsListG.querySelectorAll("li").forEach((option) => {
+        function handler(e) {
+            if ((e.type === "click" && e.clientX !== 0 && e.clientY !== 0) || e.key === "Enter") {
+                selectedValueG.textContent = option.children[1].textContent;
+                customSelect.classList.remove("active");
+
+                
+                if (option.children[0].name === "state") {
+                    updateCityDropdown(option.children[0].value);
+                    enableCityDropdown();
+                }
+            }
+        }
+
+        option.addEventListener("keyup", handler);
+        option.addEventListener("click", handler);
+    });
+});
+   
+
+
+
+const lawyer_title_container=document.querySelector('.lawyer-title-container');
+ const title_container=document.querySelector('.title-container');
+ const filters=document.querySelector('.filter-container');
+ const main_body=document.querySelector('.main-body');
+ const lawyer_container=document.querySelector('.lawyer-container-0')
+
+ lawyer_title_container.onclick =()=>{
+     filters.classList.add('filter-active');
+     lawyer_title_container.classList.add('filter-remove');
+
+    lawyer_container.classList.add('lawyer-active');
+
+ }
+  title_container.onclick=()=>{
+  lawyer_title_container.classList.remove('filter-remove');
+  filters.classList.remove('filter-active');
+  lawyer_container.classList.remove('lawyer-active');
+ }
+
+// const paginationContainer = document.getElementById('paginationContainer');
+// const currentPage = paginationContainer.getAttribute('data-current-page');
+// console.log(currentPage);
+
+document.getElementById('sendLocationBtn').addEventListener('click', function() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+
+            // Redirect to the `/lawyerspage` route with latitude and longitude as query parameters
+            window.location.href = `/lawyerspage?latitude=${latitude}&longitude=${longitude}`;
+
+        }, function(error) {
+            console.error('Error getting location:', error);
+        });
+    } else {
+        console.error('Geolocation is not supported by this browser.');
+    }
+});
+
+
+
+
+    </script>
+</body>
+</html>

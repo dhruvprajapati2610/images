@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawyers-Legal Reach</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" type="image/png" href="../uploads/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">   
+    <link rel="stylesheet" href="lawyeraccount.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Slab&display=swap" rel="stylesheet">
+<style>
+    
+</style>
+</head>
+<body>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <%- include('partials/header') %>
+   <div class="body"> 
+    <div class="main-body">
+     <div class="lawyer-profile-container-0">
+        <div class="lawyer-profile-container">
+            <div class="lawyer-profile">
+               <div class="lawyer-img-info">
+                <div class="lawyer-image">
+                       <div class="img-box">
+                        <img src="<%=user.image%>" alt="">
+                       </div>
+                       <div class="edit-btn">
+                        <span> Edit Profile </span>
+                         <i class="fa-regular fa-pen-to-square"></i>
+                       </div>
+                       <div class="logout-btn">
+                        <span> Logout </span>
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                       </div>
+                </div>
+                <div class="lawyer-info">
+                     <div class="lawyer-name-ratings">
+                       <div class="name">
+                           <h2><%= user.name %></h2>
+                       </div>
+                       <div class="rating">
+                             <div class="rating-star">
+                                <% for (let i=1; i<=5; i++) { %>
+                                    <% if(i<= Math.floor(averageRating)) { %>
+                                     <span class="fa fa-star rating-checked-reveiew"></span>
+                                    <% } else if(i===Math.ceil(averageRating) && !Number.isInteger(averageRating)) { %>
+                                     <span class="fa fa-star-half-alt rating-checked"></span>
+                                   <% } else {  %>
+                                     <span class="fa fa-star"></span>
+                                   <% } %>
+                                  <% } %>
+                             </div>
+                             <div class="rating-info"><%=averageRating.toFixed(1)%>|
+                                <%= clientCount %>+ user<%= clientCount > 1 ? 's':''%> rating
+                             </div>
+                       </div>
+                     </div>
+                     <hr>
+                     <div class="lawyer-details-area">
+                        <div class="lawyer-details">
+                            <div class="lawyer-sub-details">
+                            <div class="lawyer-loc">
+                                <i class="fa-solid fa-location-dot fa-solid-logo"></i>&nbsp;&nbsp;<%=user.city%>, <%=user.states%>
+                              </div>
+                              <div class="lawyer-exp">
+                                <i class="fa-solid fa-suitcase fa-solid-logo"></i>&nbsp;&nbsp;<%=user.yrs_exp%> years experience
+                              </div>
+                              <div class="lawyer-language">
+                                <i class="fa-solid fa-language fa-solid-logo"></i>&nbsp;&nbsp;<%=user.language.replace(/[{"}]/g,'').split(',').join(', ')%>
+                              </div>
+                              </div>
+                        </div>
+                        <div class="lawyer-area">
+                            <div class="lawyer-skill">
+                                <h4>Pratice area & Skills - </h4>
+                                <p><%=user.area_of_prac.replace(/[{"}]/g,'').split(',').join(', ')%></p>
+                           </div>
+                        </div>
+                     </div>
+                </div>
+                
+             </div> 
+            <div class="form-container-0">
+                <div class="form-container"> 
+                    <a href="#" class="close">&times;</a>
+                    <div class="form-headings">
+                     <h2>Enter details to update</h2>
+                    </div>
+                    <div class="wrapper">
+                        <form action="/userAccount" id="user-account-form" method="post" enctype="multipart/form-data">
+                            <div class="input-fields">
+                                <div class="input-field">
+                                    <input type="text" name="name" id="update-name" placeholder="Name">
+                                  </div>
+                                  <div class="input-field if-field">
+                                    <input type="email" name="email" id="update-email" placeholder="Email">
+                                  </div>
+                                  <div class="input-field if-field if-password">
+                                    <input type="password" name="passw" id="update-password" placeholder="New Password">
+                                    <i id="toggle-password" class="fas fa-eye-slash"></i>
+                                  </div>
+                                  <div class="input-field if-field if-password">
+                                    <input type="password" name="cpassw" id="co-password" placeholder="Confirm New password">
+                                    <i id="toggle-co-password" class="fas fa-eye-slash"></i>
+                                  </div>
+                                  <div class="input-field if-field">
+                                    <input type="phone" name="phone" id="update-number" placeholder="Contact number">
+                                  </div>
+                                  <div class="input-field if-field">
+                                    <input type="number" name="yrs_exp" value="" id="update-experience" placeholder="Years of experience" min="0" max="100">
+                                  </div>
+                                  <div class="input-field if-field">
+                                    <input type="text" name="courts" id="update-courts" placeholder="Courts">
+                                  </div>
+                                 
+                                 
+                                  <div class="input-field if-field">
+                                    <input type="file" name="image" id="update-img" placeholder="Upload your image">
+                                    <!-- <label for="update-img" id="label-img">Upload Image</label> -->
+                                </div>
+                                <div class="input-field if-field">
+                                    <div class="custom-select-g">
+                                        <div class="select-button-g" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown-1">
+                                            <span class="selected-value-g">Select state</span>
+                                            <span class="arrow-g"></span>
+                                        </div>
+                                        <ul class="select-dropdown-g" role="listbox" id="select-dropdown-1">
+                                       
+                                            <li role="option-g">
+                                                <input type="radio" id="andhra_pradesh" name="state" value="andhra_pradesh" />
+                                                <label for="andhra_pradesh">Andhra Pradesh</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="arunachal_pradesh" name="state" value="arunachal_pradesh" />
+                                                <label for="arunachal_pradesh">Arunachal Pradesh</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="assam" name="state" value="assam" />
+                                                <label for="assam">Assam</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="bihar" name="state" value="bihar" />
+                                                <label for="bihar">Bihar</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="chhattisgarh" name="state" value="chhattisgarh" />
+                                                <label for="chhattisgarh">Chhattisgarh</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="goa" name="state" value="goa" />
+                                                <label for="goa">Goa</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="gujarat" name="state" value="gujarat" />
+                                                <label for="gujarat">Gujarat</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="haryana" name="state" value="haryana" />
+                                                <label for="haryana">Haryana</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="himachal_pradesh" name="state" value="himachal_pradesh" />
+                                                <label for="himachal_pradesh">Himachal Pradesh</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="jharkhand" name="state" value="jharkhand" />
+                                                <label for="jharkhand">Jharkhand</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="karnataka" name="state" value="karnataka" />
+                                                <label for="karnataka">Karnataka</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="kerala" name="state" value="kerala" />
+                                                <label for="kerala">Kerala</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="madhya_pradesh" name="state" value="madhya_pradesh" />
+                                                <label for="madhya_pradesh">Madhya Pradesh</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="maharashtra" name="state" value="maharashtra" />
+                                                <label for="maharashtra">Maharashtra</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="manipur" name="state" value="manipur" />
+                                                <label for="manipur">Manipur</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="meghalaya" name="state" value="meghalaya" />
+                                                <label for="meghalaya">Meghalaya</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="mizoram" name="state" value="mizoram" />
+                                                <label for="mizoram">Mizoram</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="nagaland" name="state" value="nagaland" />
+                                                <label for="nagaland">Nagaland</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="odisha" name="state" value="odisha" />
+                                                <label for="odisha">Odisha</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="punjab" name="state" value="punjab" />
+                                                <label for="punjab">Punjab</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="rajasthan" name="state" value="rajasthan" />
+                                                <label for="rajasthan">Rajasthan</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="sikkim" name="state" value="sikkim" />
+                                                <label for="sikkim">Sikkim</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="tamil_nadu" name="state" value="tamil_nadu" />
+                                                <label for="tamil_nadu">Tamil Nadu</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="telangana" name="state" value="telangana" />
+                                                <label for="telangana">Telangana</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="tripura" name="state" value="tripura" />
+                                                <label for="tripura">Tripura</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="uttar_pradesh" name="state" value="uttar_pradesh" />
+                                                <label for="uttar_pradesh">Uttar Pradesh</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="uttarakhand" name="state" value="uttarakhand" />
+                                                <label for="uttarakhand">Uttarakhand</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="west_bengal" name="state" value="west_bengal" />
+                                                <label for="west_bengal">West Bengal</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="andaman_nicobar_islands" name="state" value="andaman_nicobar_islands" />
+                                                <label for="andaman_nicobar_islands">Andaman and Nicobar Islands</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="chandigarh" name="state" value="chandigarh" />
+                                                <label for="chandigarh">Chandigarh</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="dadar_nagar_haveli" name="state" value="dadar_nagar_haveli" />
+                                                <label for="dadar_nagar_haveli">Dadra and Nagar Haveli</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="daman_diu" name="state" value="daman_diu" />
+                                                <label for="daman_diu">Daman Diu</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="delhi" name="state" value="delhi" />
+                                                <label for="delhi">Delhi</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="jammu_kashmir" name="state" value="jammu_kashmir" />
+                                                <label for="jammu_kashmir">Jammu and Kashmir</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="ladakh" name="state" value="ladakh" />
+                                                <label for="ladakh">Ladakh</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="lakshadweep" name="state" value="lakshadweep" />
+                                                <label for="lakshadweep">Lakshadweep</label>
+                                            </li>
+                                            <li role="option-g">
+                                                <input type="radio" id="puducherry" name="state" value="puducherry" />
+                                                <label for="puducherry">Puducherry</label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="input-field if-field">
+                                    <div class="custom-select-g">
+                                        <div class="select-button-g" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown-2">
+                                            <span class="selected-value-g" name="city">Select city</span>
+                                            <span class="arrow-g"></span>
+                                        </div>   
+                                        <ul class="select-dropdown-g" role="listbox" id="select-dropdown-2">
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- <div class="input-field if-field">
+                                    <input type="file" name="image" id="lawyer-upload-img" placeholder="Upload your image">
+                                </div> -->
+                                <!-- <div class="input-field if-field">
+                                    <input type="number" name="experience" id="year-exp" placeholder="update Experience">
+                                </div> -->
+                                <div class="input-field if-field">
+                                    <div class="custom-select-1">
+                                        <div class="select-button" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown">
+                                          <span class="selected-value">Area of Practice </span>
+                                          <span class="arrow"></span>
+                                        </div>
+                                        <ul class="select-dropdown select-dropdown-2" role="listbox" >
+                                          <li role="option">
+                                            <input type="checkbox" id="Divorce" name="areaofpractice[]" value="Divorce"/>
+                                            <label for="Divorce">Divorce</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Family-Dispute" name="areaofpractice[]" value="Family Dispute" />
+                                            <label for="Family-Dispute">Family Dispute</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Child-Custody" name="areaofpractice[]"value="Child Custody" />
+                                            <label for="Child-Custody">Child Custody</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Medical-Negligence" name="areaofpractice[]" value="Medical Negligence"/>
+                                            <label for="Medical-Negligence">Medical Negligence</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Criminal" name="areaofpractice[]" value="Criminal"/>
+                                            <label for="Criminal">Criminal</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Property" name="areaofpractice[]" value="Property"/>
+                                            <label for="Property">Property</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Cyber-Crime" name="areaofpractice[]" value="Cyber Crime"/>
+                                            <label for="Cyber-Crime">Cyber Crime</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Labour-&-Services" name="areaofpractice[]" value="Labour & Services"/>
+                                            <label for="Labour-&-Services">Labour & Services</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Landlord" name="areaofpractice[]"value="Landlord"/>
+                                            <label for="Landlord">Landlord</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="radio" id="Trademark-&-copyright" name="areaofpractice[]" value="Trademark & copyright"/>
+                                            <label for="Trademark-&-copyright">Trademark & copyright</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Startup" name="areaofpractice[]" value="Startup"/>
+                                            <label for="Startup">Startup</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Custom-&-Central-Excices" name="areaofpractice[]" value="Custom & Central Excices"/>
+                                            <label for="Custom-&-Central-Excices">Custom & Central Excices</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Banking-&-Finance" name="areaofpractice[]" value="Banking & Finance"/>
+                                            <label for="Banking-&-Finance">Banking & Finance</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Corporate" name="areaofpractice[]" value="Corporate"/>
+                                            <label for="Corporate">Corporate</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Gst-&-Tax" name="areaofpractice[]" value="Gst & Tax"/>
+                                            <label for="Gst-&-Tax">Gst & Tax</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Documentation" name="areaofpractice[]" value="Documentation"/>
+                                            <label for="Documentation">Documentation</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Consumer-Court"name="areaofpractice[]" value="Consumer Court"/>
+                                            <label for="Consumer-Court">Consumer Court</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Civil" name="areaofpractice[]" value="Civil"/>
+                                            <label for="Civil">Civil</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Check-Bounce" name="areaofpractice[]" value="Check Bounce"/>
+                                            <label for="Check-Bounce">Check Bounce</label>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                </div>
+                                <div class="input-field if-field">
+                                    <div class="custom-select-1">
+                                        <div class="select-button" role="combobox" aria-labelledby="select button" aria-haspopup="listbox" aria-expanded="false" aria-controls="select-dropdown">
+                                          <span class="selected-value">Select Languages </span>
+                                          <span class="arrow"></span>
+                                        </div>
+                                        <ul class="select-dropdown select-dropdown-2" role="listbox" >
+                                          <li role="option">
+                                            <input type="checkbox" id="Assamese" name="language[]" value="Assamese"/>
+                                            <label for="Assamese">Assamese</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Bengali" name="language[]" value="Bengali"/>
+                                            <label for="Bengali">Bengali</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Bodo" name="language[]" value="Bodo"/>
+                                            <label for="Bodo">Bodo</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Dogri" name="language[]" value="Dogri"/>
+                                            <label for="Dogri">Dogri</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="English" name="language[]" value="English"/>
+                                            <label for="English">English</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Gujarati" name="language[]" value="Gujarati"/>
+                                            <label for="Gujarati">Gujarati</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Hindi" name="language[]" value="Hindi"/>
+                                            <label for="Hindi">Hindi</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Kannada" name="language[]" value="Kannada"/>
+                                            <label for="Kannada">Kannada</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Kashmiri" name="language[]" value="Kashmiri"/>
+                                            <label for="Kashmiri">Kashmiri</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Konkani" name="language[]" value="Konkani"/>
+                                            <label for="Konkani">Konkani</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Maithili" name="language[]" value="Maithili"/>
+                                            <label for="Maithili">Maithili</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Malayalam" name="language[]" value="Malayalam"/>
+                                            <label for="Malayalam">Malayalam</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Manipuri" name="language[]" value="Manipuri"/>
+                                            <label for="Manipuri">Manipuri</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Marathi" name="language[]" value="Marathi"/>
+                                            <label for="Marathi">Marathi</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Nepali" name="language[]" value="Nepali"/>
+                                            <label for="Nepali">Nepali</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Odia" name="language[]" value="Odia"/>
+                                            <label for="Odia">Odia</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Punjabi" name="language[]" value="Punjabi"/>
+                                            <label for="Punjabi">Punjabi</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Sanskrit" name="language[]" value="Sanskrit"/>
+                                            <label for="Sanskrit">Sanskrit</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Santali" name="language[]" value="Santali"/>
+                                            <label for="Santali">Santali</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Sindhi" name="language[]" value="Sindhi"/>
+                                            <label for="Sindhi">Sindhi</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Tamil" name="language[]" value="Tamil"/>
+                                            <label for="Tamil">Tamil</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Telugu" name="language[]" value="Telugu"/>
+                                            <label for="Telugu">Telugu</label>
+                                          </li>
+                                          <li role="option">
+                                            <input type="checkbox" id="Urdu" name="language[]" value="Urdu"/>
+                                            <label for="Urdu">Urdu</label>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                </div>
+                                <div class="input-field if-field bio">
+                                    <textarea name="bio" id="update-bio" cols="30" rows="10" placeholder="Update Bio"></textarea>
+                                </div>
+                                <div class="input-field if-field bio">
+                                    <textarea name="address" id="update-address" cols="30" rows="10" placeholder="Update Address"></textarea>
+                                </div>
+                               
+                            </div>
+                            <div class="btn-container">
+                                <div class="btn-layer"></div>
+                     <input type="submit" value="Submit" class="submit-btn" id="details-submit-btn">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="logout-form-container">
+                <form method="post" id="log-out" action="/logOut">
+                <div class="logout-form">
+                   <div class="logout-heading">
+                    <h2>Do you want to Logout ?</h2>
+                   </div>
+                   <div class="yes-no-btn">
+                    <div class="yes-btn">
+                            <button type="submit" id="yes-button">Yes</button>
+                     </div>
+                    <div class="no-btn">
+                        <button id="no-button">No</button>
+                    </div>
+                   </div>
+                </div>
+                </form>
+            </div>
+          
+
+            
+            <hr class="lawyer-hr">
+            <div class="lawyer-bio">
+                <div class="court">Bio</div>
+                <div class="lawyer-para">
+                 <p><%=user.bio%></p>
+                
+                </div>
+                 <div class="courts">
+                    <div class="court">Courts</div>
+                    <div class="court-name">
+                       <%=user.courts%>
+                    </div>
+                 </div>
+            </div>
+            </div>
+             
+            <div class="lawyer-article-0">
+                <div class="lawyer-article">
+                  <div class="write-article-heading">
+                      <span>Write An Article</span>
+                  </div>
+                  <!-- <form action="/submit-article" method="post">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                    <label for="content">Content:</label>
+                    <textarea name="content" id="content"></textarea>
+                    <button type="submit">Submit</button>
+                </form> -->
+             
+                   <form action="/userAccount" id="article-box" enctype="multipart/form-data"  method="post" class="article-form">
+                      <div class="input-field if-field">
+                          <input type="text" name="title" id="title" placeholder="Enter Title for Article" required>
+                      </div>
+                      <div class="input-field if-field bio">
+                        <textarea name="content" id="content" placeholder="Write Article"></textarea>
+                      </div>
+                      <div class="article-btn-container">
+                          <div class="article-submit">
+                             <input type="submit" value="Submit" class="article-submit-btn">
+                          </div>
+                          <div class="article-reset">
+                              <input type="reset" value="Reset" class="article-reset-btn">
+                          </div>
+                      </div>
+                    </form>
+                </div>
+            </div> 
+          
+            <div class="lawyer-reveiews">
+                <div class="reveiew-title">
+                    Client reviews
+                    <hr>
+                </div>
+                <div class="reveiew-section">
+                    <% reviews.forEach(review=>{ %>
+                       <div class="reveiew-container">
+                           <div class="reveiew-name-rating">
+                            <div class="r-n">
+                               <div class="reveiew-name">
+                                <%= review.name %>
+                               </div>
+                               <div class="reveiew-rating">
+                                <% for (let i=0;i< review.rating; i++) { %>
+                                    <span class="fa fa-star rating-checked-reveiew"></span>
+                                    <% } %>
+                                  <% for (let i=review.rating; i<5; i++) { %>
+                                    <span class="fa fa-star"></span>
+                                    <% } %>
+                               </div>
+                               </div>
+                               <div class="created-at">
+                                <%= formatDate(review.created_at) %>
+                             </div>
+                           </div>
+                           <div class="reveiew-para">
+                            <p><%= review.comment %></p>
+                           </div>
+                           <div class="lawyer-reply">
+                            <div class="reply-btn">
+                        
+                        
+                            </div>
+                            <!-- <div class="lawyer-reply-para" id="lawyer-reply-para-1">
+                                <form action="#">
+                                    <textarea name="reply-para" id="reply-para" cols="40" rows="5"></textarea>
+                                    <div class="btn-ok-cnc">
+                                        <button type="submit" class="ok-btn">Submit</button>
+                                        <div class="cnc-btn">Cancel</div>
+                                    </div>
+                                </form>
+                            </div> -->
+                            <div class="lawyer-previous-reply">
+                                <div class="p-reply" id="p-reply-1">
+                                    <span></span>
+                                    <p></p>
+                                </div>
+                                <br>     
+                             </div>
+                         </div>
+                       </div>
+                        <% }) %>
+                </div>
+             </div>  
+             <% if(articles.length>0) { %>
+
+       
+             <div class="lawyer-written-articles">
+                <div class="written-article-heading">
+                  <span>Articles Written by you -</span>
+                  <hr>
+                </div>
+                <div class="written-article-container">
+                  <% articles.forEach(article => { %>
+                    <div class="written-article-box">
+                        <div class="written-article-img-btn-container">
+                            <div class="written-article-img-container">
+                                <div class="written-article-img-box">
+                                    <img src="about.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="written-article-btn-container">
+                             
+                                <button class="article-btn" data-article-id="<%=article.id%>">Read More &nbsp;&nbsp;<i class="fa-solid fa-angles-right"></i></button>
+                              
+                            </div>
+                        </div>
+                        <div class="written-article-name-rating-container">
+                          <div class="written-title-delete">
+                            <div class="article-title">
+                                <div class="title"><span ><%=article.title%></span></div>
+                            </div>  
+                            <div class="delete-article">
+                                  <span class="delete-article-button" onclick="showDeleteForm('<%=article.id%>')"><i class="fa-solid fa-trash-can"></i></span>
+                            </div>
+                             </div>
+                            
+                            <div class="written-article-name-rating">
+                                <div class="written-article-lawyer-name">
+                                    <span class="written-article-wb-title">written by -  </span>
+                                    <span class="written-article-wb-name"> <%=user.name%> </span>
+                                </div>
+                                
+      
+                            </div>
+                            <div class="written-article-desc">
+                                <div class="written-article-desc-container">
+                                    <div>
+                                <p><%-article.content%> </p>
+                                </div>
+                                </div>
+                                <div class="written-article-like-container">
+                                    <span><i class="fa-solid fa-thumbs-up"></i>&nbsp; <%=article.likes%> </span>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                      <div id="delete-article-form-<%=article.id%>" class="delete-article-form-container">
+                     
+                        <form method="post" id="delArticle-<%=article.id%>" action="/delArticle?articleId=<%=article.id%>">
+                            <div class="delete-article-form">
+                               <div class="delete-article-heading">
+                                <h2>Do you want to delete article ?</h2>
+                               </div>
+                               <div class="delete-yes-no-btn">
+                                <div class="delete-yes-btn">
+                                        <button type="submit" id="delete-yes-button">Yes</button>
+                                 </div>
+                                <div class="delete-no-btn">
+                                    <button type="button" onclick="hideDeleteForm('<%=article.id%>')" id="delete-no-button">No</button>
+                                </div>
+                               </div>
+                            </div>
+                            </form>
+                     </div>
+                 <% }) %>
+                
+                 
+                  
+                 
+                </div>
+              </div>
+              <%  } %>
+          </div>             
+     </div>  
+    </div>                           
+   <%- include('partials/footer') %>
+   </div>
+    
+
+
+  
+  <script> 
+   
+  ClassicEditor
+            .create(document.querySelector('#content'), {
+                // plugins: [ SimpleUploadAdapter, /* ... */ ],
+                toolbar: {
+                    items: [
+                        'heading', '|',
+                        'bold', 'italic', 'underline', 'strikethrough', '|',
+                        'fontFamily', 'fontSize', 'fontColor', 'fontBackgroundColor', '|',
+                        'link', 'bulletedList', 'numberedList', '|',
+                        'outdent', 'indent', '|',
+                        'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo', 'imageUpload', '|',
+                        'alignment', 'highlight', 'horizontalLine', 'specialCharacters', '|'
+                    ]
+                },
+                image: {
+                    toolbar: [
+                        'imageTextAlternative', 'imageStyle:full', 'imageStyle:side', 'resizeImage'
+                    ]
+                },
+                table: {
+                    contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
+                },
+                mediaEmbed: {
+                    previewsInData: true
+                },
+                simpleUpload: {
+                    uploadUrl: '/upload', // Set up your server to handle image uploads
+                },
+                height: '400px',
+                width: '100%'
+            })
+        </script> 
+   
+<script>
+    document.addEventListener('DOMContentLoaded',()=>{
+    const form = document.getElementById('user-account-form');
+    form.addEventListener('submit',async(event)=>{
+        event.preventDefault();
+        const formData = new FormData(form);
+        try{
+            const response = await fetch('/userAccount',{
+                method: 'POST',
+                body:  formData
+            });
+        const data = await response.json();
+        Toastify({
+            text: data.message,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            backgroundColor: data.success? "#4CAF50":"FF0000",
+        }).showToast();
+
+        if(data.success){
+            setTimeout(()=>{
+                window.location.href='/userAccount';
+            },1000);
+        }
+        } catch(error){
+            console.error('Error:', error);
+            Toastify({
+            text: "An error occurred. Please try again.",
+            duration: 3000, 
+            close: true, 
+            gravity: "top", 
+            position: "center", 
+            backgroundColor: "#FF0000", 
+          }).showToast();
+        }
+    })
+
+    const form1 = document.getElementById('log-out');
+    form1.addEventListener('submit',async(event)=>{
+        event.preventDefault();
+        const formData = new FormData(form);
+        try{
+            const response = await fetch('/logOut',{
+                method: 'POST',
+                body:  formData
+            });
+        const data = await response.json();
+        Toastify({
+            text: data.message,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            backgroundColor: data.success? "#4CAF50":"FF0000",
+        }).showToast();
+
+        if(data.success){
+            setTimeout(()=>{
+                window.location.href='/signup';
+            },1000);
+        }
+        } catch(error){
+            console.error('Error:', error);
+            Toastify({
+            text: "An error occurred. Please try again.",
+            duration: 3000, 
+            close: true, 
+            gravity: "top", 
+            position: "center", 
+            backgroundColor: "#FF0000", 
+          }).showToast();
+        }
+    })
+
+const form3 = document.getElementById('article-box');
+    form3.addEventListener('submit',async(event)=>{
+        event.preventDefault();
+        const formData = new FormData(form3);
+        try{
+            const response = await fetch('/userAccount',{
+                method: 'POST',
+                body:  formData
+            });
+        const data = await response.json();
+        Toastify({
+            text: data.message,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            backgroundColor: data.success? "#4CAF50":"FF0000",
+        }).showToast();
+
+        if(data.success){
+            setTimeout(()=>{
+                window.location.href='/articles';
+            },1000);
+        }
+        } catch(error){
+            console.error('Error:', error);
+            Toastify({
+            text: "An error occurred. Please try again.",
+            duration: 3000, 
+            close: true, 
+            gravity: "top", 
+            position: "center", 
+            backgroundColor: "#FF0000", 
+          }).showToast();
+        }
+    })
+
+  
+    document.addEventListener('submit',async(event)=>{
+        if(event.target&& event.target.id.startsWith('delArticle-')){
+            event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form); 
+        try{
+            const response = await fetch(form.action,{
+                method: 'POST',
+                body:  formData
+            });
+        const data = await response.json();
+        console.log(data);
+        Toastify({
+            text: data.message,
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            backgroundColor: data.success? "#4CAF50":"FF0000",
+        }).showToast();
+
+        if(data.success){
+            setTimeout(()=>{
+                window.location.href='/userAccount';
+            },1000);
+        }
+        } catch(error){
+            console.error('Error:', error);
+            Toastify({
+            text: "An error occurred. Please try again.",
+            duration: 3000, 
+            close: true, 
+            gravity: "top", 
+            position: "center", 
+            backgroundColor: "#FF0000", 
+          }).showToast();
+        }
+        }
+    })
+    })
+
+
+const showmenu=(toggleId, navId) =>{
+    const toggle = document.getElementById(toggleId),
+          nav=document.getElementById(navId);
+
+          toggle.addEventListener('click',()=>{
+               nav.classList.toggle('show-menu');
+               toggle.classList.toggle('show-icon');
+
+          })
+
+}
+showmenu('nav-toggle','nav-menu');
+
+const dropdownItems = document.querySelectorAll('.dropdown-item')
+
+dropdownItems.forEach((item)=>{
+    const dropdownButton= item.querySelector('.dropdown-button');
+    
+    dropdownButton.addEventListener('click',()=>{
+         const showDropdown= document.querySelector('.show-dropdown')
+
+         toggleItem(item);
+
+         if(showDropdown && showDropdown!==item){
+           toggleItem(showDropdown)
+         }
+    })
+})
+
+const toggleItem = (item) =>{
+     const dropdownContainer = item.querySelector('.dropdown-container');
+     
+     if(item.classList.contains('show-dropdown')){
+          dropdownContainer.removeAttribute('style');
+          item.classList.remove('show-dropdown');
+     }
+     else{
+         
+     dropdownContainer.style.height=dropdownContainer.scrollHeight +'px';
+     item.classList.add('show-dropdown'); 
+     }
+
+
+    
+}
+const mediaQuery=matchMedia('(min-width:1118px)'),
+ dropdownContainer=document.querySelectorAll('.dropdown-container')
+
+ const removeStyle=()=>{
+     if(mediaQuery.matches){
+          dropdownContainer.forEach((e)=>{
+             e.removeAttribute('style');
+          })
+
+          dropdownContainer.forEach((e)=>{
+               e.classList.remove('show-dropdown');
+            })
+          
+     }
+ }
+ addEventListener('resize',removeStyle);
+
+ const replyBtn=document.querySelector("#reply-btn-span-1");
+ const replyPara=document.querySelector("#lawyer-reply-para-1");
+ const previousReply=document.querySelector(".lawyer-previous-reply");
+ const showReply=document.querySelector(".show-reply");
+ const hideReply=document.querySelector(".hide-reply");
+ const cncBtn=document.querySelector(".cnc-btn")
+
+//  replyBtn.onclick =()=>{
+//     replyPara.classList.add('para-active');
+//  }
+//  cncBtn.onclick=()=>{
+//      replyPara.classList.remove('para-active');
+//  }
+//  showReply.onclick=()=>{
+//   previousReply.classList.add("para-active");
+//  }
+//  hideReply.onclick=()=>{
+//   previousReply.classList.remove("para-active");
+//  }
+
+//  const obj = possiblyUndefinedOrNullValue || {};
+// const keys = Object.keys(obj); // This will not throw an error
+// console.log(keys);
+
+
+ const formContainer0=document.querySelector(".form-container-0");
+ const edit=document.querySelector(".edit-btn");
+ const close=document.querySelector(".close");
+
+ edit.onclick=()=>{
+  formContainer0.classList.add('form-active');
+ }
+ close.onclick=()=>{
+  formContainer0.classList.remove('form-active');
+ }
+
+ const togglePassword=document.getElementById("toggle-password");
+const toggleCoPassword=document.getElementById("toggle-co-password");
+const  passwordField= document.getElementById("update-password");
+const confirmPassword=document.getElementById("co-password");
+
+togglePassword.addEventListener("click" , ()=>{
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+  } else {
+    passwordField.type = "password";
+  }
+  togglePassword.classList.toggle('fa-eye');
+
+})
+toggleCoPassword.addEventListener("click" , ()=>{
+  if (confirmPassword.type === "password") {
+    confirmPassword.type = "text";
+  } else {
+    confirmPassword.type = "password";
+  }
+  toggleCoPassword.classList.toggle('fa-eye');
+
+})
+
+const logoutformcontainer=document.querySelector(".logout-form-container");
+ const logoutBtn=document.querySelector(".logout-btn");
+ const noBtn=document.getElementById("no-button");
+ logoutBtn.onclick=()=>{
+    logoutformcontainer.classList.add('logout-form-active');
+ }
+ noBtn.onclick=()=>{
+    logoutformcontainer.classList.remove('logout-form-active');
+ }
+
+//  const deleteArticle=document.querySelector(".delete-article-button");
+//  const deleteArticleForm=document.querySelector(".delete-article-form-container");
+//  const deleteNoBtn=document.getElementById("delete-no-button");
+
+function showDeleteForm(articleId){
+    document.getElementById(`delete-article-form-${articleId}`).classList.add("delete-form-active")
+}
+
+function hideDeleteForm(articleId){
+    document.getElementById(`delete-article-form-${articleId}`).classList.remove("delete-form-active")
+}
+
+
+
+
+//  deleteArticle.onclick=()=>{
+//     deleteArticleForm.classList.add("delete-form-active")
+//  }
+//  deleteNoBtn.onclick=()=>{
+//     deleteArticleForm.classList.remove("delete-form-active")
+//  }
+
+
+const customSelectsG = document.querySelectorAll(".custom-select-g");
+const selectButtonsG = document.querySelectorAll(".select-button-g");
+const selectedValuesG = document.querySelectorAll(".selected-value-g");
+const optionsListsG = document.querySelectorAll(".select-dropdown-g");
+
+
+const stateToCities = {
+    andhra_pradesh : ["Anantapur","Chittoor","East Godavari","Guntur","Kadapa","Krishna","Kurnool","Prakasam","Nellore","Srikakulam","Visakhapatnam","Vizianagaram","West Godavari"],
+    arunachal_pradesh : ["Anjaw","Changlang","Dibang Valley","East Kameng","East Siang","Kra Daadi","Kurung Kumey","Lohit","Longding","Lower Dibang Valley","Lower Subansiri","Namsai","Papum Pare","Siang","Tawang","Tirap","Upper Siang","Upper Subansiri","West Kameng","West Siang","Itanagar"],
+    assam : ["Baksa","Barpeta","Biswanath","Bongaigaon","Cachar","Charaideo","Chirang","Darrang","Dhemaji","Dhubri","Dibrugarh","Goalpara","Golaghat","Hailakandi","Hojai","Jorhat","Kamrup Metropolitan","Kamrup (Rural)","Karbi Anglong","Karimganj","Kokrajhar","Lakhimpur","Majuli","Morigaon","Nagaon","Nalbari","Dima Hasao","Sivasagar","Sonitpur","South Salmara Mankachar","Tinsukia","Udalguri","West Karbi Anglong"],
+    bihar : ["Araria","Arwal","Aurangabad","Banka","Begusarai","Bhagalpur","Bhojpur","Buxar","Darbhanga","East Champaran","Gaya","Gopalganj","Jamui","Jehanabad","Kaimur","Katihar","Khagaria","Kishanganj","Lakhisarai","Madhepura","Madhubani","Munger","Muzaffarpur","Nalanda","Nawada","Patna","Purnia","Rohtas","Saharsa","Samastipur","Saran","Sheikhpura","Sheohar","Sitamarhi","Siwan","Supaul","Vaishali","West Champaran"],
+    chhattisgarh : ["Balod","Baloda Bazar","Balrampur","Bastar","Bemetara","Bijapur","Bilaspur","Dantewada","Dhamtari","Durg","Gariaband","Janjgir Champa","Jashpur","Kabirdham","Kanker","Kondagaon","Korba","Koriya","Mahasamund","Mungeli","Narayanpur","Raigarh","Raipur","Rajnandgaon","Sukma","Surajpur","Surguja"],
+    goa : ["North Goa","South Goa"],
+    gujarat : ["Ahmedabad","Amreli","Anand","Aravalli","Banaskantha","Bharuch","Bhavnagar","Botad","Chhota Udaipur","Dahod","Dang","Devbhoomi Dwarka","Gandhinagar","Gir Somnath","Jamnagar","Junagadh","Kheda","Kutch","Mahisagar","Mehsana","Morbi","Narmada","Navsari","Panchmahal","Patan","Porbandar","Rajkot","Sabarkantha","Surat","Surendranagar","Tapi","Vadodara","Valsad"],
+    haryana : ["Ambala","Bhiwani","Charkhi Dadri","Faridabad","Fatehabad","Gurugram","Hisar","Jhajjar","Jind","Kaithal","Karnal","Kurukshetra","Mahendragarh","Mewat","Palwal","Panchkula","Panipat","Rewari","Rohtak","Sirsa","Sonipat","Yamunanagar"],
+    himachal_pradesh : ["Bilaspur","Chamba","Hamirpur","Kangra","Kinnaur","Kullu","Lahaul Spiti","Mandi","Shimla","Sirmaur","Solan","Una"],
+    jammu_kashmir : ["Anantnag","Bandipora","Baramulla","Budgam","Doda","Ganderbal","Jammu","Kargil","Kathua","Kishtwar","Kulgam","Kupwara","Leh","Poonch","Pulwama","Rajouri","Ramban","Reasi","Samba","Shopian","Srinagar","Udhampur"],
+ jharkhand : ["Bokaro","Chatra","Deoghar","Dhanbad","Dumka","East Singhbhum","Garhwa","Giridih","Godda","Gumla","Hazaribagh","Jamtara","Khunti","Koderma","Latehar","Lohardaga","Pakur","Palamu","Ramgarh","Ranchi","Sahebganj","Seraikela Kharsawan","Simdega","West Singhbhum"],
+ karnataka : ["Bagalkot","Bangalore Rural","Bangalore Urban","Belgaum","Bellary","Bidar","Vijayapura","Chamarajanagar","Chikkaballapur","Chikkamagaluru","Chitradurga","Dakshina Kannada","Davanagere","Dharwad","Gadag","Gulbarga","Hassan","Haveri","Kodagu","Kolar","Koppal","Mandya","Mysore","Raichur","Ramanagara","Shimoga","Tumkur","Udupi","Uttara Kannada","Yadgir"],
+ kerala : ["Alappuzha","Ernakulam","Idukki","Kannur","Kasaragod","Kollam","Kottayam","Kozhikode","Malappuram","Palakkad","Pathanamthitta","Thiruvananthapuram","Thrissur","Wayanad"],
+ madhya_pradesh : ["Agar Malwa","Alirajpur","Anuppur","Ashoknagar","Balaghat","Barwani","Betul","Bhind","Bhopal","Burhanpur","Chhatarpur","Chhindwara","Damoh","Datia","Dewas","Dhar","Dindori","Guna","Gwalior","Harda","Hoshangabad","Indore","Jabalpur","Jhabua","Katni","Khandwa","Khargone","Mandla","Mandsaur","Morena","Narsinghpur","Neemuch","Panna","Raisen","Rajgarh","Ratlam","Rewa","Sagar","Satna",
+"Sehore","Seoni","Shahdol","Shajapur","Sheopur","Shivpuri","Sidhi","Singrauli","Tikamgarh","Ujjain","Umaria","Vidisha"],
+maharashtra : ["Ahmednagar","Akola","Amravati","Aurangabad","Beed","Bhandara","Buldhana","Chandrapur","Dhule","Gadchiroli","Gondia","Hingoli","Jalgaon","Jalna","Kolhapur","Latur","Mumbai City","Mumbai Suburban","Nagpur","Nanded","Nandurbar","Nashik","Navi Mumbai","Osmanabad","Palghar","Parbhani","Pune","Raigad","Ratnagiri","Sangli","Satara","Sindhudurg","Solapur","Thane","Wardha","Washim","Yavatmal"],
+manipur : ["Bishnupur","Chandel","Churachandpur","Imphal East","Imphal West","Jiribam","Kakching","Kamjong","Kangpokpi","Noney","Pherzawl","Senapati","Tamenglong","Tengnoupal","Thoubal","Ukhrul"],
+meghalaya : ["East Garo Hills","East Jaintia Hills","East Khasi Hills","North Garo Hills","Ri Bhoi","South Garo Hills","South West Garo Hills","South West Khasi Hills","West Garo Hills","West Jaintia Hills","West Khasi Hills"],
+mizoram : ["Aizawl","Champhai","Kolasib","Lawngtlai","Lunglei","Mamit","Saiha","Serchhip","Aizawl","Champhai","Kolasib","Lawngtlai","Lunglei","Mamit","Saiha","Serchhip"],
+nagaland : ["Dimapur","Kiphire","Kohima","Longleng","Mokokchung","Mon","Peren","Phek","Tuensang","Wokha","Zunheboto"],
+odisha : ["Angul","Balangir","Balasore","Bargarh","Bhadrak","Boudh","Cuttack","Debagarh","Dhenkanal","Gajapati","Ganjam","Jagatsinghpur","Jajpur","Jharsuguda","Kalahandi","Kandhamal","Kendrapara","Kendujhar","Khordha","Koraput","Malkangiri","Mayurbhanj","Nabarangpur","Nayagarh","Nuapada","Puri","Rayagada","Sambalpur","Subarnapur","Sundergarh"],
+punjab : ["Amritsar","Barnala","Bathinda","Faridkot","Fatehgarh Sahib","Fazilka","Firozpur","Gurdaspur","Hoshiarpur","Jalandhar","Kapurthala","Ludhiana","Mansa","Moga","Mohali","Muktsar","Pathankot","Patiala","Rupnagar","Sangrur","Shaheed Bhagat Singh Nagar","Tarn Taran"],
+rajasthan : ["Ajmer","Alwar","Banswara","Baran","Barmer","Bharatpur","Bhilwara","Bikaner","Bundi","Chittorgarh","Churu","Dausa","Dholpur","Dungarpur","Ganganagar","Hanumangarh","Jaipur","Jaisalmer","Jalore","Jhalawar","Jhunjhunu","Jodhpur","Karauli","Kota","Nagaur","Pali","Pratapgarh","Rajsamand","Sawai Madhopur","Sikar","Sirohi","Tonk","Udaipur"],
+sikkim : ["East Sikkim","North Sikkim","South Sikkim","West Sikkim"],
+tamil_nadu : ["Ariyalur","Chennai","Coimbatore","Cuddalore","Dharmapuri","Dindigul","Erode","Kanchipuram","Kanyakumari","Karur","Krishnagiri","Madurai","Nagapattinam","Namakkal","Nilgiris","Perambalur","Pudukkottai","Ramanathapuram","Salem","Sivaganga","Thanjavur","Theni","Thoothukudi","Tiruchirappalli","Tirunelveli","Tiruppur","Tiruvallur","Tiruvannamalai","Tiruvarur","Vellore","Viluppuram","Virudhunagar"],
+telangana : ["Adilabad","Bhadradri Kothagudem","Hyderabad","Jagtial","Jangaon","Jayashankar","Jogulamba","Kamareddy","Karimnagar","Khammam","Komaram Bheem","Mahabubabad","Mahbubnagar","Mancherial","Medak","Medchal","Nagarkurnool","Nalgonda","Nirmal","Nizamabad","Peddapalli","Rajanna Sircilla","Ranga Reddy","Sangareddy","Siddipet","Suryapet","Vikarabad","Wanaparthy","Warangal Rural","Warangal Urban","Yadadri Bhuvanagiri"],
+tripura : ["Dhalai","Gomati","Khowai","North Tripura","Sepahijala","South Tripura","Unakoti","West Tripura"],
+uttar_pradesh : ["Agra","Aligarh","Allahabad","Ambedkar Nagar","Amethi","Amroha","Auraiya","Azamgarh","Baghpat","Bahraich","Ballia","Balrampur","Banda","Barabanki","Bareilly","Basti","Bhadohi","Bijnor","Budaun","Bulandshahr","Chandauli","Chitrakoot","Deoria","Etah","Etawah","Faizabad","Farrukhabad","Fatehpur","Firozabad","Gautam Buddha Nagar","Ghaziabad","Ghazipur","Gonda","Gorakhpur","Hamirpur","Hapur","Hardoi","Hathras","Jalaun","Jaunpur","Jhansi","Kannauj","Kanpur Dehat","Kanpur Nagar","Kasganj","Kaushambi","Kheri","Kushinagar","Lalitpur","Lucknow","Maharajganj","Mahoba","Mainpuri","Mathura","Mau","Meerut","Mirzapur","Moradabad","Muzaffarnagar","Pilibhit","Pratapgarh","Raebareli","Rampur","Saharanpur","Sambhal","Sant Kabir Nagar","Shahjahanpur","Shamli","Shravasti","Siddharthnagar","Sitapur","Sonbhadra","Sultanpur","Unnao","Varanasi"],
+uttarakhand  : ["Almora","Bageshwar","Chamoli","Champawat","Dehradun","Haridwar","Nainital","Pauri","Pithoragarh","Rudraprayag","Tehri","Udham Singh Nagar","Uttarkashi"],
+west_bengal : ["Alipurduar","Bankura","Birbhum","Cooch Behar","Dakshin Dinajpur","Darjeeling","Hooghly","Howrah","Jalpaiguri","Jhargram","Kalimpong","Kolkata","Malda","Murshidabad","Nadia","North 24 Parganas","Paschim Bardhaman","Paschim Medinipur","Purba Bardhaman","Purba Medinipur","Purulia","South 24 Parganas","Uttar Dinajpur"],
+andaman_nicobar_islands : ["Nicobar","North Middle Andaman","South Andaman"],
+chandigarh: ["Chandigarh"],
+dadar_nagar_haveli_daman_diu: ["Dadra Nagar Haveli"],
+daman_diu : ["Daman","Diu"],
+delhi : ["Central Delhi","East Delhi","New Delhi","North Delhi","North East Delhi","North West Delhi","Shahdara","South Delhi","South East Delhi","South West Delhi","West Delhi"],
+ladakh :["Kargil","Leh"],
+lakshadweep : ["Lakshadweep"],
+puducherry : ["Karaikal","Mahe","Puducherry","Yanam"],
+
+
+};
+
+
+function updateCityDropdown(state) {
+    const cityDropdown = document.querySelector("#select-dropdown-2");
+    const citySelectButton = cityDropdown.previousElementSibling;
+    const citySelectedValue = citySelectButton.querySelector(".selected-value-g");
+
+    
+    cityDropdown.innerHTML = "";
+
+    
+    if (stateToCities[state]) {
+        stateToCities[state].forEach(city => {
+            const cityOption = document.createElement("li");
+            cityOption.setAttribute("role", "option-g");
+            cityOption.innerHTML = `
+                <input type="radio" id="${city}" name="city" value="${city}" />
+                <label for="${city}">${city}</label>
+            `;
+            cityDropdown.appendChild(cityOption);
+
+            cityOption.addEventListener("keyup", function(e) {
+                if (e.key === "Enter") {
+                    citySelectedValue.textContent = cityOption.children[1].textContent;
+                    cityDropdown.parentNode.classList.remove("active");
+                }
+            });
+
+            cityOption.addEventListener("click", function(e) {
+                if (e.clientX !== 0 && e.clientY !== 0) {
+                    citySelectedValue.textContent = cityOption.children[1].textContent;
+                    cityDropdown.parentNode.classList.remove("active");
+                }
+            });
+        });
+    }
+
+  
+    citySelectedValue.textContent = "Select city";
+}
+
+
+function enableCityDropdown() {
+    const cityCustomSelect = document.querySelector("#select-dropdown-2").parentNode;
+    cityCustomSelect.classList.remove("disabled");
+}
+
+
+document.querySelector("#select-dropdown-2").parentNode.classList.add("disabled");
+
+
+customSelectsG.forEach((customSelect, index) => {
+    const selectBtnG = selectButtonsG[index];
+    const selectedValueG = selectedValuesG[index];
+    const optionsListG = optionsListsG[index];
+
+    selectBtnG.addEventListener("click", () => {
+        
+        if (!customSelect.classList.contains("disabled")) {
+            customSelect.classList.toggle("active");
+            selectBtnG.setAttribute(
+                "aria-expanded",
+                selectBtnG.getAttribute("aria-expanded") === "true" ? "false" : "true"
+            );
+        }
+    });
+
+    optionsListG.querySelectorAll("li").forEach((option) => {
+        function handler(e) {
+            if ((e.type === "click" && e.clientX !== 0 && e.clientY !== 0) || e.key === "Enter") {
+                selectedValueG.textContent = option.children[1].textContent;
+                customSelect.classList.remove("active");
+
+                
+                if (option.children[0].name === "state") {
+                    updateCityDropdown(option.children[0].value);
+                    enableCityDropdown();
+                }
+            }
+        }
+
+        option.addEventListener("keyup", handler);
+        option.addEventListener("click", handler);
+    });
+});
+
+const customSelects = document.querySelectorAll(".custom-select-1");
+ const selectButtons = document.querySelectorAll(".select-button");
+ const selectedValues = document.querySelectorAll(".selected-value");
+ const optionsLists = document.querySelectorAll(".select-dropdown");
+ 
+
+ customSelects.forEach((customSelect, index) => {
+   const selectBtn = selectButtons[index];
+   const selectedValue = selectedValues[index];
+   const optionsList = optionsLists[index];
+ 
+   selectBtn.addEventListener("click", () => {
+     customSelect.classList.toggle("active");
+     selectBtn.setAttribute(
+       "aria-expanded",
+       selectBtn.getAttribute("aria-expanded") === "true" ? "false" : "true"
+     );
+   });
+ 
+   optionsList.querySelectorAll("li").forEach((option) => {
+    option.addEventListener("click", () => {
+      const selectedOptions = optionsList.querySelectorAll("input[type='checkbox']:checked");
+      let selectedValuesText = "";
+
+      selectedOptions.forEach((selectedOption) => {
+        selectedValuesText += selectedOption.value + ", ";
+      });
+
+      selectedValue.textContent = selectedValuesText.slice(0, -2) ; // Remove trailing comma if no options selected
+    });
+});
+ });
+ document.addEventListener('DOMContentLoaded', () => {
+ const viewArticleButtons = document.querySelectorAll('.article-btn');
+ viewArticleButtons.forEach(button=>{
+  button.addEventListener('click',async(event)=>{
+    const articleId = event.target.dataset.articleId;
+    try{
+      const response = await fetch(`/fullarticle?articleId=${articleId}`,{
+        method: 'GET',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        // body: JSON.stringify({ lawyerId })
+      })
+      if(response.ok){
+        window.location.href = `/fullarticle?articleId=${articleId}`;
+      } else {
+        const errorData = await response.json();
+        console.error('Error fetching full article:', errorData);
+      }
+    } catch(error){
+      console.error('error:',error);
+    }
+  })
+ })
+});
+
+
+  
+</script>
+       
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iLegal Home</title>
+    <link rel="icon" type="image/png" href="../uploads/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+
+    <link rel="stylesheet" href="crpcDrop.css">
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=66793db46b65c10019188ef5&product=inline-share-buttons&source=platform" async="async"></script>
+ <style>
+        /* Style the container */
+        #translate_widget_container {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-family: Arial, sans-serif;
+          padding: 10px;
+        }
+    
+        /* Style the icon */
+        .translate-icon {
+          width: 24px;
+          height: 24px;
+        }
+      </style>
+</head>
+
+<body>
+
+<%- include('partials/header') %>
+    <div class="body">
+
+        <div class="main-body">
+            <div class="sub-body">
+             <div id="translate_widget_container">
+                    <!-- Icon -->
+                    <img 
+                      src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Google_Translate_logo.svg" 
+                      alt="Google Translate Icon" 
+                      class="translate-icon"
+                    />
+                    <!-- Google Translate widget -->
+                    <div id="google_translate_element"></div>
+                  </div>
+                <div class="ipc-heading">
+                    <h1>CRPC Chapter <%=data[0].chapter_number%> - <%=data[0].chapter_name%>
+                    </h1>
+                </div>
+                <div class="ipc-image">
+                    <div class="ipc-img-box">
+                        <img src="crpc.png" alt="">
+                    </div>
+                </div>
+                <div class="ipc-info">
+                    <% data.forEach(row => { %>
+                    <div class="description ">
+                        <div class="hedg hedg-1">
+                            <h2>Description of CRPC Section <%=row.no%></h2>
+                        </div>
+                        <div class="desc desc-1">
+                            <ul class="crpc-info">
+                                <li class="crpc-item">
+                                   <span><%=row.content%>
+                                         </span>
+                                </li>
+                    
+                            </ul>
+                        </div>
+                    </div>
+                    <% }) %>
+               
+                   
+                 
+                  
+                   
+
+
+
+                </div>
+                <div class="sharethis-inline-share-buttons"></div>
+            </div>
+
+        </div>
+<%- include('partials/footer') %>
+
+
+        <script>
+            const showmenu = (toggleId, navId) => {
+                const toggle = document.getElementById(toggleId),
+                    nav = document.getElementById(navId);
+
+                toggle.addEventListener('click', () => {
+                    nav.classList.toggle('show-menu');
+                    toggle.classList.toggle('show-icon');
+
+                })
+
+            }
+            showmenu('nav-toggle', 'nav-menu');
+
+            const dropdownItems = document.querySelectorAll('.dropdown-item')
+
+            dropdownItems.forEach((item) => {
+                const dropdownButton = item.querySelector('.dropdown-button');
+
+                dropdownButton.addEventListener('click', () => {
+                    const showDropdown = document.querySelector('.show-dropdown')
+
+                    toggleItem(item);
+
+                    if (showDropdown && showDropdown !== item) {
+                        toggleItem(showDropdown)
+                    }
+                })
+            })
+
+            const toggleItem = (item) => {
+                const dropdownContainer = item.querySelector('.dropdown-container');
+
+                if (item.classList.contains('show-dropdown')) {
+                    dropdownContainer.removeAttribute('style');
+                    item.classList.remove('show-dropdown');
+                }
+                else {
+
+                    dropdownContainer.style.height = dropdownContainer.scrollHeight + 'px';
+                    item.classList.add('show-dropdown');
+                }
+
+
+
+            }
+            const mediaQuery = matchMedia('(min-width:1118px)'),
+                dropdownContainer = document.querySelectorAll('.dropdown-container')
+
+            const removeStyle = () => {
+                if (mediaQuery.matches) {
+                    dropdownContainer.forEach((e) => {
+                        e.removeAttribute('style');
+                    })
+
+                    dropdownContainer.forEach((e) => {
+                        e.classList.remove('show-dropdown');
+                    })
+
+                }
+            }
+            addEventListener('resize', removeStyle);
+
+
+            const customSelects = document.querySelectorAll(".custom-select-1");
+            const selectButtons = document.querySelectorAll(".select-button");
+            const selectedValues = document.querySelectorAll(".selected-value");
+            const optionsLists = document.querySelectorAll(".select-dropdown");
+
+            customSelects.forEach((customSelect, index) => {
+                const selectBtn = selectButtons[index];
+                const selectedValue = selectedValues[index];
+                const optionsList = optionsLists[index];
+
+                selectBtn.addEventListener("click", () => {
+                    customSelect.classList.toggle("active");
+                    selectBtn.setAttribute(
+                        "aria-expanded",
+                        selectBtn.getAttribute("aria-expanded") === "true" ? "false" : "true"
+                    );
+                });
+
+                optionsList.querySelectorAll("li").forEach((option) => {
+                    function handler(e) {
+                        if ((e.type === "click" && e.clientX !== 0 && e.clientY !== 0) || e.key === "Enter") {
+                            selectedValue.textContent = option.children[1].textContent;
+                            customSelect.classList.remove("active");
+                        }
+                    }
+
+                    option.addEventListener("keyup", handler);
+                    option.addEventListener("click", handler);
+                });
+            });
+            document.querySelectorAll('.hedg').forEach((heading) => {
+            heading.addEventListener('click', () => {
+                // Find the next sibling element
+                const correspondingDescription = heading.nextElementSibling;
+
+                // Ensure it exists and is a description element
+                if (correspondingDescription && correspondingDescription.classList.contains('desc')) {
+                    correspondingDescription.classList.toggle('desc-active'); // Toggle active state
+                }
+            });
+        });
+
+            
+
+    
+        </script>
+  <script type="text/javascript">
+            function googleTranslateElementInit() {
+              new google.translate.TranslateElement(
+                {
+                  pageLanguage: 'en',
+                  includedLanguages: 'hi,ta,te,bn,ml,gu,kn,mr,pa,ur,as,or', // Original language of the page
+                  layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+              );
+            }
+          </script>
+          <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
+</html>

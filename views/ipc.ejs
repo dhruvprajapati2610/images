@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iLegal Home</title>
+    <link rel="icon" type="image/png" href="../uploads/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"  />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"  />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Slab&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="ipc.css">
+        <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=66793db46b65c10019188ef5&product=inline-share-buttons&source=platform" async="async"></script>
+  <style>
+          
+          #translate_widget_container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: Arial, sans-serif;
+            padding: 10px;
+          }
+      
+        
+          .translate-icon {
+            width: 24px;
+            height: 24px;
+          }
+        </style>
+</head>
+<body>
+  <%-include('partials/header')%>
+  <div class="body">
+     <% ipc.forEach(ipc=> { %>
+    <div class="main-body">
+        <div class="sub-body">
+ <div id="translate_widget_container">
+   
+    <img 
+      src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Google_Translate_logo.svg" 
+      alt="Google Translate Icon" 
+      class="translate-icon"
+    />
+
+    <div id="google_translate_element"></div>
+  </div>
+           <div class="ipc-heading">
+            <h1>IPC <%=ipc.ipc_section%> - <%=ipc.offence%></h1>
+           </div>
+           <div class="ipc-image">
+            <div class="ipc-img-box">
+                 <img src="legal.png" alt="">
+            </div>
+           </div>
+           <div class="ipc-info">
+            <div class="description ">
+               <div class="hedg">
+                    <h2>Description of IPC <%=ipc.ipc_section%></h2>
+               </div>
+               <div class="desc">
+               <%=ipc.description_split%>
+               </div>
+               <!-- <div class="table-info">
+                 <div class="offence table-ele">
+                    <div class="off-hedg table-ele-hedg">Offence</div>
+                    <div class="off-desc table-ele-desc"><%=ipc.offence%></div>
+                 </div>
+                 <div class="punishment table-ele">
+                    <div class="puns-hedg table-ele-hedg">Punishment</div>
+                    <div class="puns-desc table-ele-desc"><%=ipc.punishment%></div>
+                 </div>
+                 <div class="cognizance table-ele">
+                    <div class="cog-hedg table-ele-hedg">cognizance</div>
+                    <div class="cog-desc table-ele-desc"><%=ipc.cognizance%></div>
+                 </div>
+                 <div class="bail table-ele">
+                    <div class="bail-hedg table-ele-hedg">Bail</div>
+                    <div class="bail-desc table-ele-desc"><%=ipc.bail%></div>
+                 </div>
+                 <div class="triable table-ele">
+                    <div class="tri-hedg table-ele-hedg">triable</div>
+                    <div class="tri-desc table-ele-desc"><%=ipc.triable%></div>
+                 </div>
+               </div> -->
+               <div class="ipc-table">
+                <table>
+                  <tr>
+                      <td><strong>Offence</strong></td>
+                      <td><%=ipc.offence%></td>
+                  </tr>
+                  <tr>
+                      <td><strong>Punishment</strong></td>
+                      <td><%=ipc.punishment%></td>
+                  </tr>
+                  <tr>
+                      <td><strong>Cognizance</strong></td>
+                      <td><%=ipc.cognizance%></td>
+                  </tr>
+                  <tr>
+                      <td><strong>Bail</strong></td>
+                      <td><%=ipc.bail%></td>
+                  </tr>
+                  <tr>
+                      <td><strong>Triable</strong></td>
+                      <td><%=ipc.triable%></td>
+                  </tr>
+              </table>
+               </div>
+               <%=ipc.offence_detailed%>
+               <br>
+               <%=ipc.punishment_detailed%>
+            </div>
+            <div class="simple-words">
+               <div class="hedg">
+                <h2>IPC <%=ipc.ipc_section%> in Simple Words</h2>
+               </div>
+               <div class="desc">
+               <%=ipc.ipc_in_simple_words%>
+               </div>
+            </div>
+            <div class="simple-words">
+              <div class="hedg">
+               <h2> Importance and Practical application</h2>
+              </div>
+              <div class="desc">
+              <%=ipc.importance%>
+              <p>Practical application:</p>
+              <%=ipc.practical_application%>
+              </div>
+           </div>
+  
+      
+              <div class="simple-words">
+                <div class="hedg">
+                 <h2>Conclusion</h2>
+                </div>
+                <div class="desc">
+                <%=ipc.conclusion%>
+                </div>
+
+         </div>
+        
+          
+           </div>
+           <div class="sharethis-inline-share-buttons"></div>
+        </div>
+      
+    </div>
+    <%  }) %>
+    <%-include('partials/footer')%>
+  </div>
+  <script>
+    const showmenu=(toggleId, navId) =>{
+    const toggle = document.getElementById(toggleId),
+          nav=document.getElementById(navId);
+
+          toggle.addEventListener('click',()=>{
+               nav.classList.toggle('show-menu');
+               toggle.classList.toggle('show-icon');
+
+          })
+
+}
+showmenu('nav-toggle','nav-menu');
+
+const dropdownItems = document.querySelectorAll('.dropdown-item')
+
+dropdownItems.forEach((item)=>{
+    const dropdownButton= item.querySelector('.dropdown-button');
+    
+    dropdownButton.addEventListener('click',()=>{
+         const showDropdown= document.querySelector('.show-dropdown')
+
+         toggleItem(item);
+
+         if(showDropdown && showDropdown!==item){
+           toggleItem(showDropdown)
+         }
+    })
+})
+
+const toggleItem = (item) =>{
+     const dropdownContainer = item.querySelector('.dropdown-container');
+     
+     if(item.classList.contains('show-dropdown')){
+          dropdownContainer.removeAttribute('style');
+          item.classList.remove('show-dropdown');
+     }
+     else{
+         
+     dropdownContainer.style.height=dropdownContainer.scrollHeight +'px';
+     item.classList.add('show-dropdown'); 
+     }
+
+
+    
+}
+const mediaQuery=matchMedia('(min-width:1118px)'),
+ dropdownContainer=document.querySelectorAll('.dropdown-container')
+
+ const removeStyle=()=>{
+     if(mediaQuery.matches){
+          dropdownContainer.forEach((e)=>{
+             e.removeAttribute('style');
+          })
+
+          dropdownContainer.forEach((e)=>{
+               e.classList.remove('show-dropdown');
+            })
+          
+     }
+ }
+ addEventListener('resize',removeStyle);
+
+
+ const customSelects = document.querySelectorAll(".custom-select-1");
+ const selectButtons = document.querySelectorAll(".select-button");
+ const selectedValues = document.querySelectorAll(".selected-value");
+ const optionsLists = document.querySelectorAll(".select-dropdown");
+ 
+ customSelects.forEach((customSelect, index) => {
+   const selectBtn = selectButtons[index];
+   const selectedValue = selectedValues[index];
+   const optionsList = optionsLists[index];
+ 
+   selectBtn.addEventListener("click", () => {
+     customSelect.classList.toggle("active");
+     selectBtn.setAttribute(
+       "aria-expanded",
+       selectBtn.getAttribute("aria-expanded") === "true" ? "false" : "true"
+     );
+   });
+ 
+   optionsList.querySelectorAll("li").forEach((option) => {
+     function handler(e) {
+       if ((e.type === "click" && e.clientX !== 0 && e.clientY !== 0) || e.key === "Enter") {
+         selectedValue.textContent = option.children[1].textContent;
+         customSelect.classList.remove("active");
+       }
+     }
+ 
+     option.addEventListener("keyup", handler);
+     option.addEventListener("click", handler);
+   });
+ });
+  </script>
+ </script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+        {
+          pageLanguage: 'en',
+          includedLanguages: 'hi,ta,te,bn,ml,gu,kn,mr,pa,ur,as,or', // Original language of the page
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        },
+        'google_translate_element'
+      );
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+     </body>
+     </html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iLegal Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.1.0/remixicon.css">
+    <link rel="icon" type="image/png" href="../uploads/logo.png">
+        <link rel="stylesheet" href="../public/bns.css">
+     
+</head>
+<body>
+    <header class="header">
+        <nav class="nav container">
+             <div class="nav-data">
+                 <img class="logo" src="/images/logo.png" height="80px" alt="" srcset="" style="padding-left: 35px;">
+    
+                  <div class="nav-toggle" id="nav-toggle">
+                     <i class="ri-menu-line nav-toggle-menu"></i>
+                     <i class="ri-close-fill nav-toggle-close"></i>
+                  </div>
+             </div>
+             <div class="nav-menu" id="nav-menu">
+                 <ul class="nav-list">
+                     
+                     <li class="dropdown-item">
+                         <div class="nav-link dropdown-button">
+                             Find Lawyer <i class="ri-arrow-down-s-line dropdown-arrow"></i>
+                         </div>
+    
+                         <div class="dropdown-container">
+                             <div class="dropdown-content">
+                                 <div class="dropdown-group">
+                                    <!-- <div class="dropdown-icon">
+                                     <i class="fa-sharp fa-regular fa-house-chimney-window"></i>
+                                    </div> -->
+    
+                                    <span class="dropdown-title">Family/Personal  </span>
+    
+                                    <ul class="dropdown-list">
+                                     <li>
+                                         <a href="/search-homepage-lawyers?law=divorce"class="dropdown-link">Divorce</a>
+                                     </li>
+    
+                                     <li>
+                                         <a href="/search-homepage-lawyers?law=family-dispute"class="dropdown-link">Family Dispute</a>
+                                     </li>
+    
+                                     <li>
+                                         <a href="/search-homepage-lawyers?law=child-custody"class="dropdown-link">Child Custody</a>
+                                     </li>
+                                     <li>
+                                         <a href="/search-homepage-lawyers?law=medical-negligence"class="dropdown-link">Medical Negligence</a>
+                                     </li>
+                                 </ul>
+                                 </div>
+                                  
+                                 <div class="dropdown-group">
+                                     <!-- <div class="dropdown-icon">
+                                         <i class="ri-heart-line"></i>
+                                     </div> -->
+                                     <span class="dropdown-title">Criminal/Property   </span>
+                                     <ul class="dropdown-list">
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=criminal"class="dropdown-link">Criminal</a>
+                                      </li>
+    
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=property"class="dropdown-link">Property</a>
+                                      </li>
+    
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=cyber-crime"class="dropdown-link">Cyber Crime</a>
+                                      </li>
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=labour-&-services"class="dropdown-link">Labour & Services</a>
+                                      </li>
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=landlord-tenant"class="dropdown-link">Landlord/Tenant</a>
+                                      </li>
+                                     </ul>
+                                  </div>
+                                 
+                                 
+                                  <div class="dropdown-group">
+                                     <!-- <div class="dropdown-icon">
+                                         <i class="ri-book-marked-line"></i>
+                                     </div> -->
+                                     <span class="dropdown-title">Corporate Law  </span>
+                                     <ul class="dropdown-list">
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=trademark-&-copyright"class="dropdown-link">Trademark & Copyright</a>
+                                      </li>
+    
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=customs-&-central-excise"class="dropdown-link">Customs & Central Excise</a>
+                                      </li>
+    
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=startup"class="dropdown-link">Startup</a>
+                                      </li>
+    
+                                      <li>
+                                         <a href="/search-homepage-lawyers?law=banking-finance"class="dropdown-link">Banking/Finance</a>
+                                     </li>
+                                      <li>
+                                         <a href="/search-homepage-lawyers?law=corporate"class="dropdown-link">Corporate</a>
+                                     </li>
+                                      <li>
+                                         <a href="/search-homepage-lawyers?law=gst-tax"class="dropdown-link">GST/Tax</a>
+                                     </li>
+                                     </ul>
+                                  </div>
+    
+                                  <div class="dropdown-group">
+                                     <!-- <div class="dropdown-icon">
+                                         <i class="ri-file-paper-2-line"></i>
+                                     </div> -->
+                                     <span class="dropdown-title">Civil/Debt Matters </span>
+                                     <ul class="dropdown-list">
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=documentation"class="dropdown-link">Documentation</a>
+                                      </li>
+    
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=consumer-court"class="dropdown-link">Consumer Court</a>
+                                      </li>
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=civil"class="dropdown-link">Civil</a>
+                                      </li>
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=cheque-bounce"class="dropdown-link">Cheque Bounce</a>
+                                      </li>
+                                      
+                                     </ul>
+                                  </div>
+    
+    
+    
+                                  <div class="dropdown-group">
+                                     <!-- <div class="dropdown-icon">
+                                         <i class="ri-file-paper-2-line"></i>
+                                     </div> -->
+                                     <span class="dropdown-title">Others</span>
+                                     <ul class="dropdown-list">
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=supreme-court"class="dropdown-link">Supreme Court</a>
+                                      </li>
+    
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=insurance"class="dropdown-link">Insurance</a>
+                                      </li>
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=immigration"class="dropdown-link">Immigration</a>
+                                      </li>
+                                      <li>
+                                          <a href="/search-homepage-lawyers?law=international-law"class="dropdown-link">International Law</a>
+                                      </li>
+                                      
+                                     </ul>
+                                  </div>
+    
+    
+    
+                                 </div>
+    
+                             </div>
+                     </li>
+                     <!-- <li><a href="#" class="nav-link">Legal Info</a></li> -->  
+                     
+                     <li class="dropdown-item">
+                         <div class="nav-link dropdown-button">
+                             Company<i class="ri-arrow-down-s-line dropdown-arrow"></i>
+                         </div>
+                 
+                         <div class="dropdown-container">
+                             <div class="dropdown-content">
+                 
+                                 <div class="dropdown-group">
+                                    <!-- <div class="dropdown-icon">
+                                     <i class="ri-community-line"></i>
+                                    </div> -->
+                                    <span class="dropdown-title">About Us   </span>
+                                    <ul class="dropdown-list">
+                                     <li>
+                                         <a href="/about-us"class="dropdown-link">About Us</a>
+                                     </li>
+                                     <li>
+                                        <a href="/contact-us"class="dropdown-link">Contact Us</a>
+                                    </li>
+                                     <li>
+                                         <a href="/terms-of-use"class="dropdown-link">Terms of Use</a>
+                                     </li>
+                                     
+                                    </ul>
+                                 </div>
+                                 
+                                 <div class="dropdown-group">
+                                     <!-- <div class="dropdown-icon">
+                                         <i class="ri-shield-line"></i>
+                                     </div> -->
+                                     <span class="dropdown-title">Safety and Quality   </span>
+                                     <ul class="dropdown-list">  
+                                      <li>
+                                          <a href="/privacy-policy"class="dropdown-link">Privacy Policy</a>
+                                      </li>
+                                     </ul>
+                                  </div>
+                 
+                 
+                             </div>
+                         </div>
+                 
+                     </li>
+                     <li class="dropdown-item item-5">
+                       
+                        <a class="nav-link dropdown-button" href="/allipc">IPC Sections</a> 
+                        
+                     </li> 
+                     <li class="dropdown-item item-5">
+                       
+                        <a class="nav-link dropdown-button" href="/articles">Articles</a> 
+                        
+                     </li> 
+                     <li class="dropdown-item item-5" >
+                       <a class="nav-link dropdown-button" href="/userAccount">My Account</a> 
+                             <!-- <i class="ri-arrow-down-s-line dropdown-arrow"></i> -->
+                     
+    
+                     </li>
+                   </ul>
+             </div>
+        </nav>
+    </header>    
+  <div class="body">   
+     <div class="main-body">
+        <div class="sub-body">
+            <div class="ipc-heading">
+             <h1>IPC </h1>
+            </div>
+            <div class="ipc-image">
+             <div class="ipc-img-box">
+                  <img src="../uploads/" alt="">
+             </div>
+            </div>
+            <div class="ipc-info">
+             <div class="description ">
+                <div class="hedg">
+                     <h2>Description of IPC </h2>
+                </div>
+                <div class="desc">
+                
+                </div>
+                <!-- <div class="table-info">
+                  <div class="offence table-ele">
+                     <div class="off-hedg table-ele-hedg">Offence</div>
+                     <div class="off-desc table-ele-desc"><%=ipc.offence%></div>
+                  </div>
+                  <div class="punishment table-ele">
+                     <div class="puns-hedg table-ele-hedg">Punishment</div>
+                     <div class="puns-desc table-ele-desc"><%=ipc.punishment%></div>
+                  </div>
+                  <div class="cognizance table-ele">
+                     <div class="cog-hedg table-ele-hedg">cognizance</div>
+                     <div class="cog-desc table-ele-desc"><%=ipc.cognizance%></div>
+                  </div>
+                  <div class="bail table-ele">
+                     <div class="bail-hedg table-ele-hedg">Bail</div>
+                     <div class="bail-desc table-ele-desc"><%=ipc.bail%></div>
+                  </div>
+                  <div class="triable table-ele">
+                     <div class="tri-hedg table-ele-hedg">triable</div>
+                     <div class="tri-desc table-ele-desc"><%=ipc.triable%></div>
+                  </div>
+                </div> -->
+                <div class="ipc-table">
+                 <table>
+                   <tr>
+                       <td><strong>Offence</strong></td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                       <td><strong>Punishment</strong></td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                       <td><strong>Cognizance</strong></td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                       <td><strong>Bail</strong></td>
+                       <td></td>
+                   </tr>
+                   <tr>
+                       <td><strong>Triable</strong></td>
+                       <td></td>
+                   </tr>
+               </table>
+                </div>
+                
+                <br>
+                
+             </div>
+             <div class="simple-words">
+                <div class="hedg">
+                 <h2>IPC in simple Words</h2>
+                </div>
+                <div class="desc">
+                <%=ipc.ipc_in_simple_words%>
+                </div>
+             </div>
+             <div class="simple-words">
+               <div class="hedg">
+                <h2> Importance and Practical application</h2>
+               </div>
+               <div class="desc">
+               
+               <p>Practical application:</p>
+               <%=ipc.practical_application%>
+               </div>
+            </div>
+   
+       
+               <div class="simple-words">
+                 <div class="hedg">
+                  <h2>Conclusion</h2>
+                 </div>
+                 <div class="desc">
+                 <%=ipc.conclusion%>
+                 </div>
+ 
+          </div>
+         
+           
+            </div>
+            <div class="sharethis-inline-share-buttons"></div>
+         </div>
+      </div>
+        <footer>
+            <div class="footer-section">
+              <div class="section-1">
+                  <div class="sub-sec-1">
+                     <div class="sub-ul" id="ul-1">
+                      <h3>Areas of Law</h3>
+                      <hr>
+                      <ul>
+                        <li class="ul-li1" id="ul-li1-1"><a href="/search-homepage-lawyers?law=divorce">Divorce</a></li>
+                        <li class="ul-li1" id="ul-li1-2"><a href="/search-homepage-lawyers?law=family-dispute">Family Dispute</a></li>
+                        <li class="ul-li1" id="ul-li1-3"><a href="/search-homepage-lawyers?law=child-custody">Child Custody</a></li>
+                        <li class="ul-li1" id="ul-li1-4"><a href="/search-homepage-lawyers?law=criminal">Criminal</a></li>
+                        <li class="ul-li1" id="ul-li1-5"><a href="/search-homepage-lawyers?law=property">Property</a></li>
+                        <li class="ul-li1" id="ul-li1-6"><a href="/search-homepage-lawyers?law=cyber-crime">Cyber Crime</a></li>
+                        <li class="ul-li1" id="ul-li1-7"><a href="/search-homepage-lawyers?law=trademark-&-copyright">Trademark & Copyright</a></li>
+                        <li class="ul-li1" id="ul-li1-8"><a href="/search-homepage-lawyers?law=startup">Startup</a></li>
+                        <li class="ul-li1" id="ul-li1-9"><a href="/search-homepage-lawyers?law=banking-finance">Banking & Finance</a></li>
+                        <li class="ul-li1" id="ul-li1-10"><a href="/search-homepage-lawyers?law=documentation">Documentation</a></li>
+                      </ul>
+                     </div>
+                     <div class="sub-ul"id="ul-2">
+                      <h3>  Cities</h3>
+                      <hr>
+                      <ul>
+                        <li class="ul-li2" id="ul-li2-1"><a href="/search-homepage-lawyers?city=Mumbai">Mumbai Lawyers</a></li>
+                        <li class="ul-li2" id="ul-li2-2"><a href="/search-homepage-lawyers?city=Delhi">Delhi Lawyers</a></li>
+                        <li class="ul-li2" id="ul-li2-3"><a href="/search-homepage-lawyers?city=Banglore">Bangalore Lawyers</a></li>
+                        <li class="ul-li2" id="ul-li2-4"><a href="/search-homepage-lawyers?city=Chennai">Chennai Lawyers</a></li>
+                        <li class="ul-li2" id="ul-li2-5"><a href="/search-homepage-lawyers?city=Pune">Pune Lawyers</a></li>
+                        <li class="ul-li2" id="ul-li2-6"><a href="/search-homepage-lawyers?city=Ahemdabad">Ahmedabad Lawyers</a></li>
+                        <li class="ul-li2" id="ul-li2-7"><a href="/search-homepage-lawyers?city=Kolkata">Kolkata Lawyers</a></li>
+                        <li class="ul-li2" id="ul-li2-8"><a href="/search-homepage-lawyers?city=Indore">Indore Lawyers</a></li>
+                        <li class="ul-li2" id="ul-li2-9"><a href="/search-homepage-lawyers?city=Jaipur">Jaipur Lawyers</a></li>
+                        <li class="ul-li2" id="ul-li2-10"><a href="/search-homepage-lawyers?city=Goa">Goa Lawyers</a></li>
+                      </ul>
+                     </div>
+                     <div class="sub-ul" id="ul-3">
+                      <h3>  Courts</h3>
+                      <hr>
+                      <ul>
+                        <li class="ul-li3" id="ul-li3-1"><a href="#">Delhi High Court</a></li>
+                        <li class="ul-li3" id="ul-li3-2"><a href="#">Bombay High Court</a></li>
+                        <li class="ul-li3" id="ul-li3-3"><a href="#">Allahabad High Court</a></li>
+                        <li class="ul-li3" id="ul-li3-4"><a href="#">Calcutta High Court</a></li>
+                        <li class="ul-li3" id="ul-li3-5"><a href="#">Karnataka High Court</a></li>
+                        <li class="ul-li3" id="ul-li3-6"><a href="#">Gujarat High Court</a></li>
+                        <li class="ul-li3" id="ul-li3-7"><a href="#">Hyderabad High Court</a></li>
+                        <li class="ul-li3" id="ul-li3-8"><a href="#">MadhyaPradesh High Court</a></li>
+                        <li class="ul-li3" id="ul-li3-9"><a href="#">Kerala High Court</a></li>
+                        <li class="ul-li3" id="ul-li3-10"><a href="#">Madras High Court</a></li>
+                      </ul>
+                     </div>
+                  </div>
+                  <div class="sub-sec-2">
+                    <div class="news-box">
+                      <div class="news-info">
+                      <div class="news-heading"><h3>Subscribe to our newsletter</h3></div>
+                      <div class="news-desc"><p>Monthly digest of what's new and exciting from us.</p></div>
+                      </div>
+                      <div class="news-email">
+                        <form action="">
+                          <div class="input-field if-field">
+                            <input type="email" name="email" id="signup-client-email" placeholder="Email Address">
+                         </div>
+                        <div class="button">
+                             <button type="submit" value="submit">submit</button>
+                        </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <hr>
+              <div class="section-2">
+                <div class="sec-2-sub-1">
+                  <ul>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/contact-us">Contact Us</a></li>
+                    <li><a href="/terms-of-use">Terms of Use</a></li>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                  </ul>
+                </div>
+                <div class="sec-2-sub-2">
+                  <ul>
+                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
+                    <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                  </ul>
+                </div>
+              </div>
+              <hr>
+              <div class="section-3">
+                <div class="s3-para-1">The information provided on ILegalAdvice.com is provided AS IS, subject to Terms Of Use & Privacy Policy. It is solely available at your request for informational purposes only, should not be interpreted as soliciting or advertisement. In cases where the user has any legal issues, he/she in all cases must seek independent legal advice. Advocate ratings displayed on ILegalAdvice.com are based on user feedback. They are not recommendations to engage or consult any lawyer. ILegalAdvice does not guarantee accuracy, adequacy or completeness of any information and is not responsible for any errors or omissions, or for results obtained from the use of such information.</div>
+                <div class="s3-para-2">ILegalAdvice.com © 2023 Company, Inc. All rights reserved</div>
+              </div>
+              
+            </div>
+        </footer> 
+          
+    </div>
+  
+     
+
+    <script >
+  
+
+
+        const showmenu=(toggleId, navId) =>{
+    const toggle = document.getElementById(toggleId),
+          nav=document.getElementById(navId);
+
+          toggle.addEventListener('click',()=>{
+               nav.classList.toggle('show-menu');
+               toggle.classList.toggle('show-icon');
+
+          })
+}
+showmenu('nav-toggle','nav-menu');
+
+const dropdownItems = document.querySelectorAll('.dropdown-item')
+
+dropdownItems.forEach((item)=>{
+    const dropdownButton= item.querySelector('.dropdown-button');
+    
+    dropdownButton.addEventListener('click',()=>{
+         const showDropdown= document.querySelector('.show-dropdown')
+
+         toggleItem(item);
+
+         if(showDropdown && showDropdown!==item){
+           toggleItem(showDropdown)
+         }
+    })
+})
+
+const toggleItem = (item) =>{
+     const dropdownContainer = item.querySelector('.dropdown-container');
+     
+     if(item.classList.contains('show-dropdown')){
+          dropdownContainer.removeAttribute('style');
+          item.classList.remove('show-dropdown');
+     }
+     else{
+         
+     dropdownContainer.style.height=dropdownContainer.scrollHeight +'px';
+     item.classList.add('show-dropdown'); 
+     }
+
+
+    
+}
+const mediaQuery=matchMedia('(min-width:1118px)'),
+ dropdownContainer=document.querySelectorAll('.dropdown-container')
+
+ const removeStyle=()=>{
+     if(mediaQuery.matches){
+          dropdownContainer.forEach((e)=>{
+             e.removeAttribute('style');
+          })
+            dropdownContainer.forEach((e)=>{
+               e.classList.remove('show-dropdown');
+            })   
+     }
+ }
+ addEventListener('resize',removeStyle);
+ 
+
+
+document.querySelector("#select-dropdown-2").parentNode.classList.add("disabled");
+
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="../uploads/logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+    <style>
+        #content{
+            max-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+    <h1>Write an Article</h1>
+    <form action="/submit-article" method="post">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <!-- <label for="content">Content:</label> -->
+        <textarea name="content" id="content"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // import { SimpleUploadAdapter } from '@ckeditor/ckeditor5-upload';
+        ClassicEditor
+            .create(document.querySelector('#content'), {
+                // plugins: [ SimpleUploadAdapter, /* ... */ ],
+                toolbar: {
+                    items: [
+                        'heading', '|',
+                        'bold', 'italic', 'underline', 'strikethrough', '|',
+                        'fontFamily', 'fontSize', 'fontColor', 'fontBackgroundColor', '|',
+                        'link', 'bulletedList', 'numberedList', '|',
+                        'outdent', 'indent', '|',
+                        'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo', 'imageUpload', '|',
+                        'alignment', 'highlight', 'horizontalLine', 'specialCharacters', '|'
+                    ]
+                },
+                image: {
+                    toolbar: [
+                        'imageTextAlternative', 'imageStyle:full', 'imageStyle:side', 'resizeImage'
+                    ]
+                },
+                table: {
+                    contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
+                },
+                mediaEmbed: {
+                    previewsInData: true
+                },
+                simpleUpload: {
+                    uploadUrl: '/upload', // Set up your server to handle image uploads
+                    headers: {
+                        
+                        // Authorization header if needed
+                    }
+                },
+                height: '200px'
+            })
+            .catch(error => {
+                console.error(error);
+            });
+
+</script>
+</body>
